@@ -1,10 +1,4 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
 .filter {
-  margin-top: 20px !important;
-  margin-bottom: 1rem !important;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
