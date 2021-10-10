@@ -1,4 +1,29 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 .filter {
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+
+.icons {
+  color: #4a4ca0;
+}
+
+.navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#logo {
+  margin-top: 5px;
+  width: 55px;
+  height: 55px;
 }

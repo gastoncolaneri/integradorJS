@@ -19,57 +19,81 @@
     <title>Inicio</title>
   </head>
   <body>
-    <div class="navbar-fixed">
-      <nav class="light-blue darken-4">
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-            ><i class="material-icons">menu</i></a
-          >
-          <ul class="right hide-on-med-and-down">
-            <li><a href="/index.html">Inicio</a></li>
-            <li><a href="/games.html">Juegos</a></li>
-            <li><a href="/search.html">Buscador</a></li>
-            <li><a href="/review.html">Opiniones</a></li>
-            <li>
-              <a href="/login.html"><strong>Ingresar</strong></a>
-            </li>
-          </ul>
+    <header>
+      <div class="navbar-fixed">
+        <nav class="deep-purple darken-3 z-depth-3 navbar">
+          <div class="nav-wrapper">
+            <a href="/index.html" class="brand-logo hide-on-med-and-down"
+              ><img src="/img/logo.png" alt="logo" id="logo"
+            /></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+              ><i class="material-icons">menu</i></a
+            >
+            <ul class="right hide-on-med-and-down">
+              <li><a href="/index.html">Inicio</a></li>
+              <li><a href="/games.html">Juegos</a></li>
+              <li><a href="/search.html">Buscador</a></li>
+              <li><a href="/review.html">Opiniones</a></li>
+              <li>
+                <a href="/login.html"><strong>Ingresar</strong></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <ul class="sidenav deep-purple darken-3" id="mobile-demo">
+          <li>
+            <a href="/index.html" class="white-text"
+              ><i class="material-icons white-text"> home</i>Inicio</a
+            >
+          </li>
+          <li>
+            <a href="/games.html" class="white-text">
+              <i class="material-icons white-text"> videogame_asset</i>
+              Juegos</a
+            >
+          </li>
+          <li>
+            <a href="/search.html" class="white-text">
+              <i class="material-icons white-text"> search</i>Buscador</a
+            >
+          </li>
+          <li>
+            <a href="/review.html" class="white-text">
+              <i class="material-icons white-text"> rate_review</i>Opiniones</a
+            >
+          </li>
+          <li>
+            <a href="/login.html" class="white-text">
+              <i class="material-icons white-text"> play_circle_filled</i
+              >Ingresar</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="parallax-container">
+        <div class="parallax"><img src="./img/banner1.jpg" /></div>
+      </div>
+      <div class="section deep-purple darken-3 z-depth-3">
+        <div class="row container">
+          <h2 class="header white-text">Parallax</h2>
+          <p class="white-text text-darken-3 lighten-3">
+            Parallax is an effect where the background content or image in this
+            case, is moved at a different speed than the foreground content
+            while scrolling.
+          </p>
         </div>
-      </nav>
+      </div>
+      <div class="parallax-container">
+        <div class="parallax"><img src="./img/banner2.jpg" /></div>
+      </div>
+    </main>
 
-      <ul class="sidenav light-blue darken-4" id="mobile-demo">
-        <li>
-          <a href="/index.html" class="white-text"
-            ><i class="material-icons white-text"> home</i>Inicio</a
-          >
-        </li>
-        <li>
-          <a href="/games.html" class="white-text">
-            <i class="material-icons white-text"> videogame_asset</i> Juegos</a
-          >
-        </li>
-        <li>
-          <a href="/search.html" class="white-text">
-            <i class="material-icons white-text"> search</i>Buscador</a
-          >
-        </li>
-        <li>
-          <a href="/review.html" class="white-text">
-            <i class="material-icons white-text"> rate_review</i>Opiniones</a
-          >
-        </li>
-        <li>
-          <a href="/login.html" class="white-text">
-            <i class="material-icons white-text"> play_circle_filled</i
-            >Ingresar</a
-          >
-        </li>
-      </ul>
-    </div>
-
-    <footer class="page-footer light-blue darken-4">
-      <div class="footer-copyright light-blue darken-4">
+    <footer class="page-footer deep-purple darken-3">
+      <div class="footer-copyright deep-purple darken-3">
         <div class="container">
           © 2021 Gaston Colaneri
           <a class="grey-text text-lighten-4 right" href="#!"> Suscribirte</a>

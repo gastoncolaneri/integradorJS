@@ -1,14 +1,20 @@
 let divPrueba = document.querySelector('#prueba');
+let carouselDiv = document.querySelector('#carousel');
+let imgOne = document.querySelector('#imgOne');
+let imgTwo = document.querySelector('#imgTwo');
+let imgThree = document.querySelector('#imgThree');
+let imgFour = document.querySelector('#imgFour');
+let imgFive = document.querySelector('#imgFive');
+let listaElementos = [imgOne, imgTwo, imgThree, imgFour, imgFive];
+
 let listaJuegos = [];
 const CORSURL = 'https://cors-anywhere.herokuapp.com/';
 const APIURL = 'https://www.freetogame.com/api/games';
+const URLGAMEID = 'https://www.freetogame.com/api/game?id=';
 
 const pruebaAPI = async () => {
-  let datos = await fetch(CORSURL + APIURL);
-  console.log(datos);
-
+  let datos = await fetch(APIURL);
   let respuesta = await datos.json();
-  console.log(respuesta);
 
   divPrueba.innerHTML = `${respuesta.map((juego) => {
     return `
@@ -25,6 +31,29 @@ const pruebaAPI = async () => {
       </div>
     </div>`;
   })}</div>`;
+};
+
+const carouselAPI = async (i) => {
+  let numRandom = Math.floor(Math.random() * (515 - 1)) + 1;
+  let datos = await fetch(URLGAMEID + numRandom);
+  let respuesta = await datos.json();
+  if (respuesta.status !== 0) {
+    console.log(listaElementos);
+    listaElementos[i].innerHTML += `<img src=${respuesta.thumbnail}/>`;
+    return respuesta;
+  } else {
+    carouselAPI(i);
+  }
+};
+
+const carouselGames = () => {
+  for (let i = 0; i < 5; i++) {
+    try {
+      carouselAPI(i);
+    } catch (error) {
+      alert(error);
+    }
+  }
 };
 
 // Materialize JS
@@ -47,14 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, options);
-  var options = {
-    dropdownOptions: {
-      Apple: null,
-      Microsoft: null,
-      Google: null,
-    },
-  };
+  var instances = M.FormSelect.init(elems);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -65,4 +87,14 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.tooltipped');
   var instances = M.Tooltip.init(elems);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(elems);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.parallax');
+  var instances = M.Parallax.init(elems);
 });
