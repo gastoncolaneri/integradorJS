@@ -48,11 +48,7 @@ const carouselAPI = async (i) => {
 
 const carouselGames = () => {
   for (let i = 0; i < 5; i++) {
-    try {
-      carouselAPI(i);
-    } catch (error) {
-      alert(error);
-    }
+    carouselAPI(i);
   }
 };
 
@@ -91,10 +87,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.carousel');
-  var instances = M.Carousel.init(elems);
+  var instances = M.Carousel.init(elems, {
+    fullWidth: true,
+    indicators: true,
+    duration: 500,
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.parallax');
   var instances = M.Parallax.init(elems);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.fixed-action-btn');
+  var instances = M.FloatingActionButton.init(elems);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var textNeedCount = document.querySelectorAll(
+    '#input_text, #textarea1, #textarea2'
+  );
+  M.CharacterCounter.init(textNeedCount);
 });

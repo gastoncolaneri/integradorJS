@@ -2,6 +2,10 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url('../img/fondo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 main {
@@ -14,12 +18,23 @@ main {
 }
 
 .icons {
-  color: #4a4ca0;
+  color: white;
 }
 
 .navbar {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.botonFloat {
+  width: 40px !important;
+}
+.wavesEffect {
+  background-color: rgba(121, 85, 72, 0.65);
+}
+#modal1,
+#modal2 {
+  background-color: #2d0f57;
 }
 
 #logo {
