@@ -18,7 +18,7 @@ main {
 }
 
 .icons {
-  color: white;
+  color: white !important;
 }
 
 .navbar {
@@ -29,11 +29,20 @@ main {
 .botonFloat {
   width: 40px !important;
 }
-.wavesEffect {
-  background-color: rgba(121, 85, 72, 0.65);
+
+.m0 {
+  margin: 0px !important;
+}
+.mt15 {
+  margin-top: 15px;
+}
+
+.mr15 {
+  margin-right: 15px;
 }
 #modal1,
-#modal2 {
+#modal2,
+#modal-footer1 {
   background-color: #2d0f57;
 }
 
