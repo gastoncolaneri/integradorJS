@@ -17,8 +17,9 @@ main {
   margin-bottom: 1rem;
 }
 
-.icons {
-  color: white !important;
+.icons,
+.yellowText {
+  color: #eddf51 !important;
 }
 
 .navbar {
@@ -39,6 +40,9 @@ main {
 
 .mr15 {
   margin-right: 15px;
+}
+.navTitles:hover {
+  color: #eddf51;
 }
 #modal1,
 #modal2,
