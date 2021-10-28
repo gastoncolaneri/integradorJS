@@ -16,57 +16,50 @@
 
     <title>Tiendas</title>
   </head>
-  <body onload="carouselGames()">
+  <body onload="carouselGames(); gamesList()">
     <header>
-      <div class="navbar-fixed">
-        <nav class="deep-purple darken-3">
-          <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-              ><i class="material-icons">menu</i></a
-            >
-            <ul class="right hide-on-med-and-down">
-              <li><a href="/index.html">Inicio</a></li>
-              <li><a href="/games.html">Juegos</a></li>
-              <li><a href="/search.html">Buscador</a></li>
-              <li><a href="/review.html">Opiniones</a></li>
-              <li>
-                <a href="/login.html"><strong>Ingresar</strong></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+      <nav class="deep-purple darken-3 z-depth-3 navbar">
+        <div class="nav-wrapper">
+          <a href="/index.html" class="brand-logo hide-on-med-and-down"
+            ><img src="/img/logo.png" alt="logo" id="logo"
+          /></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/index.html" class="navTitles">Home</a></li>
+            <li><a href="/games.html" class="navTitles">Games</a></li>
+            <li><a href="/review.html" class="navTitles">Reviews</a></li>
+            <li>
+              <a href="/login.html" class="navTitles"><strong>Login</strong></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-        <ul class="sidenav deep-purple darken-3" id="mobile-demo">
-          <li>
-            <a href="/index.html" class="white-text"
-              ><i class="material-icons white-text"> home</i>Inicio</a
-            >
-          </li>
-          <li>
-            <a href="/games.html" class="white-text">
-              <i class="material-icons white-text"> videogame_asset</i>
-              Juegos</a
-            >
-          </li>
-          <li>
-            <a href="/search.html" class="white-text">
-              <i class="material-icons white-text"> search</i>Buscador</a
-            >
-          </li>
-          <li>
-            <a href="/review.html" class="white-text">
-              <i class="material-icons white-text"> rate_review</i>Opiniones</a
-            >
-          </li>
-          <li>
-            <a href="/login.html" class="white-text">
-              <i class="material-icons white-text"> play_circle_filled</i
-              >Ingresar</a
-            >
-          </li>
-        </ul>
-      </div>
+      <ul class="sidenav deep-purple darken-3" id="mobile-demo">
+        <li>
+          <a href="/index.html" class="white-text navTitles"
+            ><i class="material-icons icons"> home</i>Home</a
+          >
+        </li>
+        <li>
+          <a href="/games.html" class="white-text navTitles">
+            <i class="material-icons icons"> videogame_asset</i>
+            Games</a
+          >
+        </li>
+        <li>
+          <a href="/review.html" class="white-text navTitles">
+            <i class="material-icons icons"> rate_review</i>Reviews</a
+          >
+        </li>
+        <li>
+          <a href="/login.html" class="white-text navTitles">
+            <i class="material-icons icons"> play_circle_filled</i>Login</a
+          >
+        </li>
+      </ul>
     </header>
 
     <main class="container">
@@ -74,12 +67,12 @@
         <div class="col s12">
           <div class="row">
             <div class="col s8 offset-s2 white-text">
-              <h5>Revisá las opiniones del juego que estés buscando</h5>
+              <h5>Know the reviews of the game you are looking for: </h5>
             </div>
             <div class="input-field col s8 offset-s2">
               <i class="material-icons icons prefix">search</i>
               <input type="text" id="autocomplete-input" class="autocomplete" />
-              <label for="autocomplete-input">Buscar juego</label>
+              <label for="autocomplete-input">Search game</label>
             </div>
           </div>
         </div>
@@ -125,16 +118,15 @@
                   <div class="row">
                   <div class="input-field col s6">
                     <input id="last_name" type="text"  required/>
-                    <label for="last_name">Juego</label>
+                    <label for="last_name">Game</label>
                     <span class="helper-text" data-error="Campo requerido" ></span>
                   </div>
                   <div class="input-field col s6">
                     <input id="last_name" type="text"  required />
-                    <label for="last_name">Plataforma</label>
+                    <label for="last_name">Platform</label>
                     <span class="helper-text" data-error="Campo requerido" ></span>
 
                   </div>
-                  <div class="row">
                     <div class="input-field col s12 white-text">                      
                       <textarea
                         id="textarea2"
@@ -142,16 +134,15 @@
                         data-length="150"
                         required
                       ></textarea>
-                      <label for="textarea2">Opinión</label>
+                      <label for="textarea2">Comments</label>
                       <span class="helper-text" data-error="Campo requerido" ></span>
                     </div>
-                  </div>
                 </div>
                 <div class="center">
                 <a
                 href="#!"
                 class="waves-effect deep-purple darken-3 waves-blue btn"
-                >Enviar</a
+                >Send</a
               ></div>
                 </form>
               </div>
@@ -166,7 +157,7 @@
       <div class="footer-copyright deep-purple darken-3">
         <div class="container">
           © 2021 Gaston Colaneri
-          <a class="grey-text text-lighten-4 right" href="#!"> Suscribirte</a>
+          <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
         </div>
       </div>
     </footer>

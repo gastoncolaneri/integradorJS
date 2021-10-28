@@ -14,71 +14,205 @@
       rel="stylesheet"
     />
 
-    <title>Juegos</title>
+    <title>Games</title>
   </head>
-  <body>
+  <body onload="gamesAutocomplete(), gamesListComplete()">
+    <!-- <body> -->
     <header>
-      <div class="navbar-fixed">
-        <nav class="deep-purple darken-3">
-          <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-              ><i class="material-icons">menu</i></a
-            >
-            <ul class="right hide-on-med-and-down">
-              <li><a href="/index.html">Inicio</a></li>
-              <li><a href="/games.html">Juegos</a></li>
-              <li><a href="/search.html">Buscador</a></li>
-              <li><a href="/review.html">Opiniones</a></li>
-              <li>
-                <a href="/login.html"><strong>Ingresar</strong></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+      <nav class="deep-purple darken-3 z-depth-3 navbar" id="navbar">
+        <div class="nav-wrapper">
+          <a href="/index.html" class="brand-logo hide-on-med-and-down"
+            ><img src="/img/logo.png" alt="logo" id="logo"
+          /></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/index.html" class="navTitles">Home</a></li>
+            <li><a href="/games.html" class="navTitles">Games</a></li>
+            <li><a href="/review.html" class="navTitles">Reviews</a></li>
+            <li>
+              <a href="/login.html" class="navTitles"><strong>Login</strong></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-        <ul class="sidenav deep-purple darken-3" id="mobile-demo">
-          <li>
-            <a href="/index.html" class="white-text"
-              ><i class="material-icons white-text"> home</i>Inicio</a
-            >
-          </li>
-          <li>
-            <a href="/games.html" class="white-text">
-              <i class="material-icons white-text"> videogame_asset</i>
-              Juegos</a
-            >
-          </li>
-          <li>
-            <a href="/search.html" class="white-text">
-              <i class="material-icons white-text"> search</i>Buscador</a
-            >
-          </li>
-          <li>
-            <a href="/review.html" class="white-text">
-              <i class="material-icons white-text"> rate_review</i>Opiniones</a
-            >
-          </li>
-          <li>
-            <a href="/login.html" class="white-text">
-              <i class="material-icons white-text"> play_circle_filled</i
-              >Ingresar</a
-            >
-          </li>
-        </ul>
-      </div>
+      <ul class="sidenav deep-purple darken-3" id="mobile-demo">
+        <li>
+          <a href="/index.html" class="white-text navTitles"
+            ><i class="material-icons icons"> home</i>Home</a
+          >
+        </li>
+        <li>
+          <a href="/games.html" class="white-text navTitles">
+            <i class="material-icons icons"> videogame_asset</i>
+            Games</a
+          >
+        </li>
+        <li>
+          <a href="/review.html" class="white-text navTitles">
+            <i class="material-icons icons"> rate_review</i>Reviews</a
+          >
+        </li>
+        <li>
+          <a href="/login.html" class="white-text navTitles">
+            <i class="material-icons icons"> play_circle_filled</i>Login</a
+          >
+        </li>
+      </ul>
     </header>
 
     <main>
-      <div id="prueba" class="row"></div>
-      <button onclick="pruebaAPI()">Api Juegos</button>
+      <div class="row">
+        <div class="container">
+          <div class="col s11 m6 offset-s1 white-text">
+            <h5>Search games</h5>
+          </div>
+          <div class="input-field col s9 m10 l12 offset-s1">
+            <i class="material-icons icons prefix">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete" />
+            <label for="autocomplete-input">Search...</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dropdown Trigger -->
+      <div class="container">
+        <div class="row">
+          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
+            <p class="left">Platform:</p>
+            <a
+              class="dropdown-trigger left valign-wrapper"
+              href="#"
+              data-target="dropdown1"
+            >
+              All Platforms
+              <i class="material-icons icons"> keyboard_arrow_down </i>
+            </a>
+          </div>
+          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
+            <p class="left">Genre:</p>
+            <a
+              class="dropdown-trigger left valign-wrapper"
+              href="#"
+              data-target="dropdown2"
+            >
+              All Genre
+              <i class="material-icons icons"> keyboard_arrow_down </i>
+            </a>
+          </div>
+          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
+            <p class="left">Sort By:</p>
+            <a
+              class="dropdown-trigger left valign-wrapper"
+              href="#"
+              data-target="dropdown3"
+            >
+              Relevance
+              <i class="material-icons icons"> keyboard_arrow_down </i>
+            </a>
+          </div>
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content dropdownBlock">
+            <li><a href="#!">Windows (PC)</a></li>
+            <li><a href="#!">Browser (Web)</a></li>
+          </ul>
+
+          <ul id="dropdown2" class="dropdown-content dropdownBlock">
+            <li><a href="#!">Shooter</a></li>
+            <li><a href="#!">MMORPG</a></li>
+            <li><a href="#!">Strategy</a></li>
+            <li><a href="#!">Racing Sports</a></li>
+            <li><a href="#!">Survival</a></li>
+            <li><a href="#!">Zombie</a></li>
+            <li><a href="#!">Tank</a></li>
+            <li><a href="#!">Space</a></li>
+            <li><a href="#!">Sailing</a></li>
+            <li><a href="#!">Superhero</a></li>
+            <li><a href="#!">Permadeath</a></li>
+            <li><a href="#!">Card</a></li>
+            <li><a href="#!">Battle-royale</a></li>
+            <li><a href="#!">Anime</a></li>
+            <li><a href="#!">Fantasy</a></li>
+            <li><a href="#!">Fighting</a></li>
+            <li><a href="#!">Action</a></li>
+            <li><a href="#!">Military</a></li>
+            <li><a href="#!">Martial-arts </a></li>
+            <li><a href="#!">Flight</a></li>
+            <li><a href="#!">Horror</a></li>
+          </ul>
+
+          <ul id="dropdown3" class="dropdown-content dropdownBlock">
+            <li><a href="#!">Relevance</a></li>
+            <li><a href="#!">Alphabetical</a></li>
+            <li><a href="#!">Release date</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="containerCard" class="container">
+          <div id="loader" class="center">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="#navbar"
+            ><i class="material-icons upIcon">keyboard_arrow_up </i></a
+          >
+        </div>
+      </div>
+
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <div>
+            <div class="input-field col s6 m6 white-text">
+              <select class="icons">
+                <option value="" disabled selected>Elegí tu opción</option>
+                <option value="PC (Windows)">PC (Windows)</option>
+                <option value="Web Browser">Web Browser</option>
+              </select>
+              <label class="white-text">Plataforma</label>
+            </div>
+            <div class="input-field col s6 m6">
+              <select class="icons">
+                <option value="" disabled selected>Elegí tu opción</option>
+                <option value="PC (Windows)">PC (Windows)</option>
+                <option value="Web Browser">Web Browser</option>
+              </select>
+              <label class="white-text">Categoría</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" id="modal-footer1">
+          <a href="#!" class="waves-effect waves-red red btn"
+            >Eliminar filtros</a
+          >
+          <a
+            href="#!"
+            class="modal-close waves-effect deep-purple darken-3 waves-blue btn"
+            >Aceptar</a
+          >
+        </div>
+      </div>
     </main>
 
     <footer class="page-footer deep-purple darken-3">
       <div class="footer-copyright deep-purple darken-3">
         <div class="container">
           © 2021 Gaston Colaneri
-          <a class="grey-text text-lighten-4 right" href="#!"> Suscribirte</a>
+          <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
         </div>
       </div>
     </footer>

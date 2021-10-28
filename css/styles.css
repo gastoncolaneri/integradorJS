@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -12,16 +16,59 @@ main {
   flex: 1 0 auto;
 }
 
-.filter {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+input,
+textarea {
+  color: #fff;
 }
 
-.icons,
-.yellowText {
+::-webkit-scrollbar {
+  display: none;
+}
+/* Custom CSS Materialize */
+
+/* label color */
+.input-field label {
+  color: #fff !important;
+}
+
+/* label focus color */
+.input-field input[type='text']:focus + label {
   color: #eddf51 !important;
 }
 
+/* label underline focus color */
+.input-field input[type='text']:focus {
+  border-bottom: 1px solid #eddf51 !important;
+  box-shadow: 0 1px 0 0 #eddf51 !important;
+}
+
+/* label focus color */
+.input-field textarea:focus + label {
+  color: #eddf51 !important;
+}
+
+/* label underline focus color */
+.input-field textarea:focus {
+  border-bottom: 1px solid #eddf51 !important;
+  box-shadow: 0 1px 0 0 #eddf51 !important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #eddf51 !important;
+}
+
+.filter {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.yellowText {
+  color: #eddf51 !important;
+}
+.icons {
+  color: #fff;
+}
 .navbar {
   padding-left: 15px;
   padding-right: 15px;
@@ -41,9 +88,72 @@ main {
 .mr15 {
   margin-right: 15px;
 }
+
+.justifyFE {
+  justify-content: flex-end;
+}
+
 .navTitles:hover {
   color: #eddf51;
 }
+
+.description {
+  background-color: #4527a0;
+  color: #fff;
+}
+.descriptionText {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 20px !important;
+}
+.hiddenLoader {
+  display: none;
+}
+
+.genreTag {
+  background-color: #7e57c2 !important;
+  cursor: default !important;
+  margin-right: 15px;
+}
+
+.dropdownButton p {
+  color: #eddf51;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.dropdownButton a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.dropdownBlock {
+  background-color: #2d0f57 !important;
+  min-width: 150px !important;
+  max-height: 250px;
+}
+.dropdownBlock li a {
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 400;
+}
+
+.dropdownBlock li a:hover {
+  background-color: #7e57c2 !important;
+  font-weight: 500 !important;
+}
+
+.upIcon {
+  z-index: 999;
+  position: fixed;
+  color: #7e57c2;
+  font-size: 80px !important;
+  bottom: 5%;
+  right: 4%;
+}
+
 #modal1,
 #modal2,
 #modal-footer1 {
