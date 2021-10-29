@@ -16,7 +16,7 @@
 
     <title>Games</title>
   </head>
-  <body onload="gamesAutocomplete(), gamesListComplete()">
+  <body onload="gamesAutocomplete(), APIrequest()">
     <!-- <body> -->
     <header>
       <nav class="deep-purple darken-3 z-depth-3 navbar" id="navbar">
@@ -80,79 +80,68 @@
       <!-- Dropdown Trigger -->
       <div class="container">
         <div class="row">
-          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
-            <p class="left">Platform:</p>
+          <div class="col s9 m3 l3 offset-s1 input-field">
+            <select class="dropdownBlock" onchange="selectedPlatform(event)">
+              <option value="allPlatforms" selected>All Platforms</option>
+              <option value="pc">Windows (PC)</option>
+              <option value="browser">Browser (Web)</option>
+            </select>
+            <label>Platform</label>
+          </div>
+
+          <div class="col s9 m3 l3 offset-s1 input-field">
+            <select class="dropdownBlock" onchange="selectedGenre(event)">
+              <option value="allGenre" selected>All genre</option>
+              <option value="card">Card Game</option>
+              <option value="fighting">Fighting</option>
+              <option value="mmo">MMO</option>
+              <option value="mmorpg">MMORPG</option>
+              <option value="moba">Moba</option>
+              <option value="racing">Racing Sports</option>
+              <option value="shooter">Shooter</option>
+              <option value="social">Social</option>
+              <option value="sports">Sports</option>
+              <option value="strategy">Strategy</option>
+            </select>
+            <label>Genre</label>
+          </div>
+
+          <div class="col s9 m3 l3 offset-s1 input-field">
+            <select class="dropdownBlock" onchange="sortBy(event)">
+              <option value="relevance" selected>Relevance</option>
+              <option value="alphabetical">Alphabetical</option>
+              <option value="release-date">Release date</option>
+            </select>
+            <label>Sort by</label>
+          </div>
+
+          <div class="col s11 m6 l3 offset-s1 valign-wrapper">
             <a
-              class="dropdown-trigger left valign-wrapper"
+              class="
+                btn
+                small
+                waves-effect waves-light
+                deep-purple
+                lighten-1
+                disabled
+              "
               href="#"
-              data-target="dropdown1"
+              id="showBtn"
+              onclick="gamesListComplete()"
             >
-              All Platforms
-              <i class="material-icons icons"> keyboard_arrow_down </i>
+              Show all
             </a>
           </div>
-          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
-            <p class="left">Genre:</p>
-            <a
-              class="dropdown-trigger left valign-wrapper"
-              href="#"
-              data-target="dropdown2"
-            >
-              All Genre
-              <i class="material-icons icons"> keyboard_arrow_down </i>
-            </a>
-          </div>
-          <div class="col s11 m6 l4 offset-s1 valign-wrapper dropdownButton">
-            <p class="left">Sort By:</p>
-            <a
-              class="dropdown-trigger left valign-wrapper"
-              href="#"
-              data-target="dropdown3"
-            >
-              Relevance
-              <i class="material-icons icons"> keyboard_arrow_down </i>
-            </a>
-          </div>
+
           <!-- Dropdown Structure -->
-          <ul id="dropdown1" class="dropdown-content dropdownBlock">
-            <li><a href="#!">Windows (PC)</a></li>
-            <li><a href="#!">Browser (Web)</a></li>
-          </ul>
 
-          <ul id="dropdown2" class="dropdown-content dropdownBlock">
-            <li><a href="#!">Shooter</a></li>
-            <li><a href="#!">MMORPG</a></li>
-            <li><a href="#!">Strategy</a></li>
-            <li><a href="#!">Racing Sports</a></li>
-            <li><a href="#!">Survival</a></li>
-            <li><a href="#!">Zombie</a></li>
-            <li><a href="#!">Tank</a></li>
-            <li><a href="#!">Space</a></li>
-            <li><a href="#!">Sailing</a></li>
-            <li><a href="#!">Superhero</a></li>
-            <li><a href="#!">Permadeath</a></li>
-            <li><a href="#!">Card</a></li>
-            <li><a href="#!">Battle-royale</a></li>
-            <li><a href="#!">Anime</a></li>
-            <li><a href="#!">Fantasy</a></li>
-            <li><a href="#!">Fighting</a></li>
-            <li><a href="#!">Action</a></li>
-            <li><a href="#!">Military</a></li>
-            <li><a href="#!">Martial-arts </a></li>
-            <li><a href="#!">Flight</a></li>
-            <li><a href="#!">Horror</a></li>
-          </ul>
-
-          <ul id="dropdown3" class="dropdown-content dropdownBlock">
-            <li><a href="#!">Relevance</a></li>
-            <li><a href="#!">Alphabetical</a></li>
-            <li><a href="#!">Release date</a></li>
-          </ul>
+          <ul id="dropdown2" class="dropdown-content dropdownBlock"></ul>
         </div>
       </div>
 
       <div class="row">
-        <div id="containerCard" class="container">
+        <div id="containerCard" class="container center"></div>
+        <div class="container">
           <div id="loader" class="center">
             <div class="preloader-wrapper big active">
               <div class="spinner-layer spinner-blue-only">
@@ -173,39 +162,6 @@
           >
         </div>
       </div>
-
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <div>
-            <div class="input-field col s6 m6 white-text">
-              <select class="icons">
-                <option value="" disabled selected>Elegí tu opción</option>
-                <option value="PC (Windows)">PC (Windows)</option>
-                <option value="Web Browser">Web Browser</option>
-              </select>
-              <label class="white-text">Plataforma</label>
-            </div>
-            <div class="input-field col s6 m6">
-              <select class="icons">
-                <option value="" disabled selected>Elegí tu opción</option>
-                <option value="PC (Windows)">PC (Windows)</option>
-                <option value="Web Browser">Web Browser</option>
-              </select>
-              <label class="white-text">Categoría</label>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer" id="modal-footer1">
-          <a href="#!" class="waves-effect waves-red red btn"
-            >Eliminar filtros</a
-          >
-          <a
-            href="#!"
-            class="modal-close waves-effect deep-purple darken-3 waves-blue btn"
-            >Aceptar</a
-          >
-        </div>
-      </div>
     </main>
 
     <footer class="page-footer deep-purple darken-3">
@@ -217,6 +173,7 @@
       </div>
     </footer>
   </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./js/main.js"></script>
 </html>
