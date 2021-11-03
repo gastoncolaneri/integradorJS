@@ -62,79 +62,77 @@
       </ul>
     </header>
 
-    <main class="valign-wrapper">
-      <div class="container">
-        <div class="row m0">
-          <form class="col s8 offset-s2">
-            <div class="card deep-purple darken-1">
-              <div class="card-content">
-                <div class="input-field col m0 s6 m0">
+    <main>
+      <div class="mainContainerLogin">
+        <div id="loginBlock" class="w50">
+          <form class="mainContainer deep-purple darken-3" action="">
+            <div>
+              <p class="mainTitle">Create your account</p>
+              <div class="blockDatos">
+                <div class="dFlex input-field">
+                  <input type="text" class="datos" id="nombre-input" required />
+                  <label for="nombre-input">Name</label>
+                </div>
+                <div class="dFlex input-field">
                   <input
-                    class="white-text"
-                    id="nombreRegistro"
+                    id="apellido-input"
                     type="text"
+                    class="datos"
                     required
                   />
-                  <label class="white-text" for="nombreRegistro">Name</label>
-                  <span class="helper-text" data-error="Campo requerido"></span>
+                  <label for="apellido-input">Surname</label>
                 </div>
-                <div class="input-field col m0 s6">
-                  <input
-                    class="white-text"
-                    id="apellidoRegistro"
-                    type="text"
-                    required
-                  />
-                  <label class="white-text" for="apellidoRegistro"
-                    >Surname</label
-                  >
-                  <span class="helper-text" data-error="Campo requerido"></span>
+                <div class="dFlex input-field">
+                  <input id="user-input" type="text" class="datos" required />
+                  <label for="user-input">Username</label>
                 </div>
-                <div class="input-field col m0 s12">
+              </div>
+              <div class="blockDatos">
+                <div class="dFlex input-field">
                   <input
-                    class="white-text"
-                    id="emailRegistro"
+                    id="email-signin-input"
                     type="email"
+                    class="datos"
                     required
                   />
-                  <label class="white-text" for="emailRegistro">Email</label>
-                  <span class="helper-text" data-error="Campo requerido"></span>
+                  <label for="email-signin-input">Email</label>
                 </div>
-                <div class="input-field col m0 s6">
+                <div class="dFlex input-field">
                   <input
-                    class="white-text"
-                    id="passRegistro"
-                    type="password"
+                    id="confirm-email-input"
+                    type="email"
+                    class="datos"
                     required
                   />
-                  <label class="white-text" for="passRegistro">Password</label>
-                  <span class="helper-text" data-error="Campo requerido"></span>
+                  <label for="confirm-email-input">Confirm email</label>
                 </div>
-                <div class="input-field col m0 s6">
+              </div>
+              <div class="blockDatos mb15">
+                <div class="dFlex input-field">
                   <input
-                    class="white-text"
-                    id="passRegistro2"
+                    id="pass-signin-input"
                     type="password"
+                    class="datos"
                     required
                   />
-                  <label class="white-text" for="passRegistro2"
-                    >Confirm password</label
-                  >
-                  <span class="helper-text" data-error="Campo requerido"></span>
+                  <label for="pass-signin-input">Password</label>
                 </div>
-                <div class="row">
-                  <a
-                    href="#"
-                    class="
-                      waves-effect
-                      deep-purple
-                      darken-3
-                      waves-blue
-                      btn
-                      right
-                    "
-                    >Sign in</a
-                  >
+                <div class="dFlex input-field">
+                  <input
+                    id="confirmPass-input"
+                    type="password"
+                    class="datos"
+                    required
+                  />
+                  <label for="confirmPass-input">Confirm password</label>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb15 taCenter">
+                  <button type="submit" class="mb15 mt20 btnSubmit">
+                    Register Now
+                  </button>
                 </div>
               </div>
             </div>

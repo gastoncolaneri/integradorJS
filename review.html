@@ -17,7 +17,6 @@
     <title>Reviews</title>
   </head>
   <body onload="carouselGames(); gamesAutocomplete()">
-
     <header>
       <nav class="deep-purple darken-3 z-depth-3 navbar">
         <div class="nav-wrapper">
@@ -68,7 +67,7 @@
         <div class="col s12">
           <div class="row">
             <div class="col s8 offset-s2 white-text">
-              <h5>Know the reviews of the game you are looking for: </h5>
+              <h5>Know the reviews of the game you are looking for:</h5>
             </div>
             <div class="input-field col s8 offset-s2" id="autocompleteReviews">
               <i class="material-icons icons prefix">search</i>
@@ -105,52 +104,52 @@
           data-position="left"
           data-tooltip="Agregar una opinión"
         >
-          <i class="large material-icons ">add</i>
+          <i class="large material-icons">add</i>
         </a>
       </div>
 
-      <div id="modal2" class="modal ">
-        <div >
-        <div class="modal-content ">
-          <i class="material-icons icons waves-effect waves-light right modal-close">cancel</i>
-
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                  <div class="input-field col s6">
-                    <input id="last_name" type="text"  required/>
-                    <label for="last_name">Game</label>
-                    <span class="helper-text" data-error="Campo requerido" ></span>
-                  </div>
-                  <div class="input-field col s6">
-                    <input id="last_name" type="text"  required />
-                    <label for="last_name">Platform</label>
-                    <span class="helper-text" data-error="Campo requerido" ></span>
-
-                  </div>
-                    <div class="input-field col s12 white-text">                      
-                      <textarea
-                        id="textarea2"
-                        class="materialize-textarea"
-                        data-length="150"
-                        required
-                      ></textarea>
-                      <label for="textarea2">Comments</label>
-                      <span class="helper-text" data-error="Campo requerido" ></span>
-                    </div>
+      <div id="modal2" class="modal">
+        <div>
+          <div class="modal-content deep-purple darken-3">
+            <i class="material-icons icons right modal-close">cancel</i>
+            <form class="mainContainer" action="">
+              <p class="mainTitle">Write your review</p>
+              <div class="blockDatos">
+                <div class="dFlex input-field">
+                  <input
+                    type="text"
+                    class="datos"
+                    id="user-review-input"
+                    required
+                  />
+                  <label for="user-review-input">User</label>
                 </div>
-                <div class="center">
-                <a
-                href="#!"
-                class="waves-effect deep-purple darken-3 waves-blue btn"
-                >Send</a
-              ></div>
-                </form>
+                <div class="dFlex input-field">
+                  <input
+                    id="game-review-input"
+                    type="text"
+                    class="datos"
+                    required
+                  />
+                  <label for="game-review-input">Game</label>
+                </div>
               </div>
+              <div class="blockDatos">
+                <div class="dFlex input-field">
+                  <textarea
+                    id="review-input"
+                    class="datos materialize-textarea"
+                    required
+                  ></textarea>
+                  <label for="review-input">Please write your review</label>
+                </div>
+              </div>
+              <div class="mt20 taCenter">
+                <button type="submit" class="btnSubmit">Send review</button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      
       </div>
     </main>
 
@@ -163,7 +162,7 @@
       </div>
     </footer>
   </body>
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./js/main.js"></script>
 </html>

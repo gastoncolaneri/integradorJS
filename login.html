@@ -62,75 +62,105 @@
       </ul>
     </header>
 
-    <main class="valign-wrapper">
-      <div class="container mt15">
-        <div class="row m0">
-          <form class="col s8 offset-s2">
-            <div class="card deep-purple darken-1">
-              <div class="card-content">
-                <div class="row">
-                  <div class="input-field col s12 m0">
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      class="white-text"
-                    />
-                    <label for="email" class="white-text">Email</label>
-                    <span
-                      class="helper-text"
-                      data-error="Ingrese su correo electrónico"
-                    ></span>
-                  </div>
-                  <div class="input-field col s12 m0">
-                    <input
-                      id="password"
-                      type="password"
-                      required
-                      class="white-text"
-                    />
-                    <label for="password" class="white-text">Password</label>
-                    <span
-                      class="helper-text"
-                      data-error="Ingrese su contraseña"
-                    ></span>
-                  </div>
-                  <div class="right">
-                    <a
-                      href="signIn.html"
-                      class="
-                        waves-effect
-                        deep-purple
-                        lighten-2
-                        waves-blue
-                        btn
-                        mr15
-                      "
-                      >Sign in</a
-                    >
-                    <a
-                      href="#!"
-                      class="waves-effect deep-purple darken-3 waves-blue btn"
-                      >Login</a
-                    >
-                  </div>
+    <main>
+      <div class="mainContainerLogin">
+        <div id="loginBlock" class="w50">
+          <form class="mainContainer deep-purple darken-3" action="">
+            <div>
+              <p class="mainTitle">Welcome!</p>
+              <div class="mb10 dFlex input-field">
+                <i class="fas fa-user-circle iconLogin prefix"></i
+                ><input
+                  type="text"
+                  class="datos"
+                  id="email-login-input"
+                  required
+                />
+                <label for="email-login-input">Email or username</label>
+              </div>
+              <div class="dFlex input-field">
+                <i class="fas fa-unlock-alt iconLogin prefix"></i
+                ><input
+                  type="password"
+                  class="datos"
+                  id="password-login-input"
+                  required
+                />
+                <label for="password-login-input">Password</label>
+              </div>
+              <div class="blockdatos mb15">
+                <div class="forgotPassBlock">
+                  <p class="forgotPassText">
+                    <a href="#modal4" class="links modal-trigger"
+                      >Forgot your password?
+                    </a>
+                  </p>
+                  <p class="taRight font14">
+                    Don´t have an account?
+                    <br /><a href="signIn.html" class="links newAccountText"
+                      >Sign up
+                    </a>
+                  </p>
                 </div>
               </div>
+              <div class="mb15 taCenter">
+                <button type="submit" class="mb10 btnSubmit">Log in</button>
+                <button class="othersLoginButton tw" type="button">
+                  <div class="loginSocialBlock">
+                    <i class="fab fa-twitter iconLoginSocial"></i>
+                    <span class="textOtherLogin">Log in with Twitter</span>
+                  </div>
+                </button>
+                <button class="othersLoginButton fb" type="button">
+                  <div class="loginSocialBlock">
+                    <i class="fab fa-facebook-square iconLoginSocial"></i>
+                    <span class="textOtherLogin">Log in with Facebook</span>
+                  </div>
+                </button>
+                <button class="othersLoginButton gm" type="button">
+                  <div class="loginSocialBlock">
+                    <i class="fab fa-google-plus-square iconLoginSocial"></i>
+                    <span class="textOtherLogin">Log in with Gmail</span>
+                  </div>
+                </button>
+              </div>
+              <div class="mb15"></div>
             </div>
           </form>
         </div>
       </div>
-    </main>
 
-    <footer class="page-footer deep-purple darken-3">
-      <div class="footer-copyright deep-purple darken-3">
-        <div class="container">
-          © 2021 Gaston Colaneri
-          <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
+      <div id="modal4" class="modal">
+        <div>
+          <div class="modal-content deep-purple darken-3">
+            <i class="material-icons icons right modal-close">cancel</i>
+            <form class="mainContainer" action="">
+              <p class="mainTitle">Reset password</p>
+              <div class="mb10 dFlex input-field">
+                <i class="fas fa-user-circle iconLogin prefix"></i
+                ><input type="email" id="email-reset-pass-input" required />
+                <label for="email-reset-pass-input"> Email </label>
+              </div>
+              <div class="taCenter">
+                <button type="submit" class="mt20 btnSubmit">Reset</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </footer>
+    </main>
+
+    <div class="footer-copyright deep-purple darken-3 footer">
+      <div class="container">
+        © 2021 Gaston Colaneri
+        <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
+      </div>
+    </div>
   </body>
+  <script
+    src="https://kit.fontawesome.com/b0962e89dc.js"
+    crossorigin="anonymous"
+  ></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./js/main.js"></script>

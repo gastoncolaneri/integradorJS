@@ -1,7 +1,18 @@
+/* -------------- Variables -------------- */
+
+:root {
+  --purple: #7e57c2;
+  --backgroundPurple: #4527a0;
+  --white: #fff;
+  --darkGrey: #292929;
+  --yellow: #eddf51;
+}
+
+/* -------------- Generales -------------- */
+
 html {
   scroll-behavior: smooth;
 }
-
 body {
   display: flex;
   min-height: 100vh;
@@ -10,65 +21,54 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  color: var(--white);
 }
-
 main {
   flex: 1 0 auto;
 }
-
 input,
 textarea {
-  color: #fff;
+  color: var(--white);
 }
-
 ::-webkit-scrollbar {
   display: none;
 }
-/* Custom CSS Materialize */
-
-/* label color */
-.input-field label {
-  color: #fff !important;
+.mb10 {
+  margin-bottom: 10px;
 }
-
-/* label focus color */
-.input-field input[type='text']:focus + label {
-  color: #eddf51 !important;
+.mb15 {
+  margin-bottom: 15px;
 }
-
-/* label underline focus color */
-.input-field input[type='text']:focus {
-  border-bottom: 1px solid #eddf51 !important;
-  box-shadow: 0 1px 0 0 #eddf51 !important;
+.mt20 {
+  margin-top: 20px;
 }
-
-/* label focus color */
-.input-field textarea:focus + label {
-  color: #eddf51 !important;
+.taCenter {
+  text-align: center;
 }
-
-/* label underline focus color */
-.input-field textarea:focus {
-  border-bottom: 1px solid #eddf51 !important;
-  box-shadow: 0 1px 0 0 #eddf51 !important;
-}
-/* icon prefix focus color */
-.input-field .prefix.active {
-  color: #eddf51 !important;
-}
-
-.filter {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+.taRight {
   text-align: right;
 }
-
+.dFlex {
+  display: flex;
+}
+.w50 {
+  width: 50%;
+}
+.font14 {
+  font-size: 14px;
+}
 .yellowText {
-  color: #eddf51 !important;
+  color: var(--yellow) !important;
 }
+
 .icons {
-  color: #fff;
+  color: var(--white);
 }
+
+.iconYellow {
+  color: var(--yellow) !important;
+}
+
 .navbar {
   padding-left: 15px;
   padding-right: 15px;
@@ -106,12 +106,75 @@ textarea {
 }
 
 .navTitles:hover {
-  color: #eddf51;
+  color: var(--yellow);
 }
+.hiddenLoader {
+  display: none;
+}
+
+.upIcon {
+  z-index: 999;
+  position: fixed;
+  color: var(--purple);
+  font-size: 80px !important;
+  bottom: 5%;
+  right: 4%;
+}
+
+.mainTitle {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  margin: 10px 0px !important;
+  color: var(--yellow);
+}
+.blockDatos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  column-gap: 30px;
+}
+
+.footer {
+  padding: 20px;
+}
+#modal1,
+#modal2,
+#modal3 {
+  background-color: var(--backgroundPurple);
+}
+#logo {
+  margin-top: 5px;
+  width: 55px;
+  height: 55px;
+}
+/* -------------- Custom CSS Materialize -------------- */
+
+.input-field label {
+  color: var(--white) !important;
+}
+.input-field input:focus + label {
+  color: var(--yellow) !important;
+}
+.input-field input:focus {
+  border-bottom: 1px solid var(--yellow) !important;
+  box-shadow: 0 1px 0 0 var(--yellow) !important;
+}
+.input-field textarea:focus + label {
+  color: var(--yellow) !important;
+}
+.input-field textarea:focus {
+  border-bottom: 1px solid var(--yellow) !important;
+  box-shadow: 0 1px 0 0 var(--yellow) !important;
+}
+.input-field .prefix.active {
+  color: var(--yellow) !important;
+}
+
+/* -------------- Games -------------- */
 
 .description {
   background-color: #4527a0;
-  color: #fff;
+  color: var(--white);
   min-height: 170px;
 }
 .descriptionText {
@@ -120,70 +183,154 @@ textarea {
   overflow: hidden;
   margin-bottom: 20px !important;
 }
-.hiddenLoader {
-  display: none;
-}
-
 .genreTag {
   background-color: transparent !important;
-  border: 2px solid #7e57c2 !important;
+  border: 2px solid var(--purple) !important;
+  color: var(--white) !important;
   cursor: default !important;
   margin-right: 15px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  text-transform: uppercase;
 }
-
 .btnInfo {
   background-color: #673ab7 !important;
   width: 100%;
 }
 .btnInfo:hover {
-  background-color: #7e57c2 !important;
+  background-color: var(--purple) !important;
 }
-
 .addFav {
   position: absolute !important;
   top: 10px;
   right: 10px;
 }
-
 .addFav:hover {
-  background-color: #7e57c2 !important;
+  background-color: var(--purple) !important;
 }
-
 .select-wrapper ul {
-  background-color: #2d0f57 !important;
+  background-color: var(--backgroundPurple) !important;
   min-width: 150px !important;
   max-height: 250px;
-  color: #fff !important;
+  color: var(--white) !important;
 }
 .select-wrapper ul li span {
-  color: #fff !important;
+  color: var(--white) !important;
   font-size: 14px !important;
   font-weight: 400;
 }
 
 .select-wrapper ul li:hover {
-  background-color: #7e57c2 !important;
+  background-color: var(--purple) !important;
   font-weight: 500 !important;
 }
 
-.upIcon {
-  z-index: 999;
-  position: fixed;
-  color: #7e57c2;
-  font-size: 80px !important;
-  bottom: 5%;
-  right: 4%;
-}
+/* -------------- Login -------------- */
 
-#modal1,
-#modal2,
-#modal3,
-#modal-footer1 {
-  background-color: #2d0f57;
+#loginBlock {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  border-radius: 10px;
+  background-color: var(--darkGrey);
+  box-shadow: var(--darkGrey) 1px 1px 20px, rgba(0, 0, 0, 0.4) -10px 10px 20px,
+    rgba(0, 0, 0, 0.4) 1px -1px 20px;
+  margin: 0 auto;
 }
-
-#logo {
-  margin-top: 5px;
-  width: 55px;
-  height: 55px;
+.btnSubmit {
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.5s ease;
+  border: 0;
+  background-color: var(--white);
+  color: #5e35b1;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.btnSubmit:hover {
+  background-color: var(--purple);
+  color: var(--white);
+}
+.iconLogin {
+  font-size: 25px;
+  align-self: center;
+  margin-right: 15px;
+  color: var(--white);
+}
+.loginSocialBlock {
+  text-align: center;
+}
+.iconLoginSocial {
+  color: var(--white);
+  font-size: 18px;
+}
+.fb {
+  background-color: #3e5b95;
+}
+.tw {
+  background-color: #5aabec;
+}
+.gm {
+  background-color: #de4c3b;
+}
+.fb:hover {
+  background-color: #3e5b95af;
+}
+.tw:hover {
+  background-color: #5aabecaf;
+}
+.gm:hover {
+  background-color: #de4c3baf;
+}
+.othersLoginButton {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 0;
+  transition: background-color 0.5s ease;
+  color: var(--white);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  text-transform: uppercase;
+}
+.textOtherLogin {
+  color: var(--white);
+  vertical-align: middle;
+}
+.forgotPassBlock {
+  display: flex;
+  justify-content: space-between;
+}
+.forgotPassText {
+  font-weight: 600;
+  text-align: left;
+  font-size: 14px;
+}
+.newAccountText {
+  font-weight: 600;
+  text-decoration-line: underline;
+  font-size: 14px;
+}
+.mainContainer {
+  padding: 2% 10% 5% 10%;
+  height: 100%;
+}
+.mainContainerLogin {
+  padding: 3% 10%;
+  height: 100%;
+}
+.links {
+  text-decoration: none;
+  color: var(--white);
+  transition: color 0.5s ease;
+}
+.links:hover {
+  color: var(--yellow);
+}
+.links:visited {
+  text-decoration: none;
 }

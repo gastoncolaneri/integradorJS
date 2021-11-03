@@ -33,10 +33,12 @@ const addFavorite = (event, id) => {
   if (event.target.classList.contains('far')) {
     event.target.classList.remove('far');
     event.target.classList.add('fas');
+    event.target.classList.add('iconYellow');
     localStorage.setItem(id, id);
     console.log(event.target.classList);
   } else if (event.target.classList.contains('fas')) {
     event.target.classList.remove('fas');
+    event.target.classList.remove('iconYellow');
     event.target.classList.add('far');
     localStorage.removeItem(id);
     console.log(event.target.classList);
@@ -61,7 +63,7 @@ const favoritesSaved = async () => {
           <div class="card-content description">
             <p class="truncate">${juego.short_description}</p>
             <div class="valign-wrapper mt15 justifyFE">
-              <div class="btn genreTag ">${juego.genre}</div>
+              <div class="genreTag ">${juego.genre}</div>
               <i class="material-icons">${iconPlatform}</i>
             </div>
             <div class=" mt15 center">
@@ -92,13 +94,14 @@ const APIrequest = async () => {
 
 const mapCard = (data) => {
   let iconFav;
+  let colorYellow;
   containerCardGames.innerHTML = '';
   try {
     data.map((juego) => {
       if (localStorage.getItem(juego.id)) {
-        iconFav = 'fas fa-heart';
+        iconFav = 'fas fa-star iconYellow';
       } else {
-        iconFav = 'far fa-heart';
+        iconFav = 'far fa-star';
       }
       juego.platform == 'PC (Windows)'
         ? (iconPlatform = 'desktop_windows')
@@ -112,13 +115,13 @@ const mapCard = (data) => {
             <img src="${juego.thumbnail}" loading="lazy">
             <span class="card-title">${juego.title}</span>
             <a class="btn-floating waves-effect waves-light deep-purple addFav hoverable" >
-              <i class="${iconFav}" onclick="addFavorite(event, '${juego.id}')"></i>
+              <i class="${iconFav} " onclick="addFavorite(event, '${juego.id}')"></i>
             </a>
           </div>
           <div class="card-content description">
             <p class="truncate">${juego.short_description}</p>
             <div class="valign-wrapper mt15 justifyFE">
-            <div class="btn genreTag ">${juego.genre}</div>
+            <div class="genreTag ">${juego.genre}</div>
             <i class="material-icons">${iconPlatform}</i>
             </div>
             <div class=" mt15 center">
@@ -187,7 +190,7 @@ const filterAutocomplete = (elemtn) => {
         <div class="card-content description">
           <p class="truncate ">${gamesFilter[0].short_description}</p>
           <div class="valign-wrapper mt15 justifyFE">
-          <div class="btn-small genreTag ">${gamesFilter[0].genre}</div>
+          <div class="genreTag ">${gamesFilter[0].genre}</div>
           <i class="material-icons">${iconPlatform}</i>
           </div>
         </div>
