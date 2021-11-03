@@ -69,7 +69,10 @@
           <div class="col s11 m6 offset-s1 white-text">
             <h5>Search games</h5>
           </div>
-          <div class="input-field col s9 m10 l12 offset-s1">
+          <div
+            class="input-field col s9 m11 l12 offset-s1"
+            id="autocompleteGames"
+          >
             <i class="material-icons icons prefix">search</i>
             <input type="text" id="autocomplete-input" class="autocomplete" />
             <label for="autocomplete-input">Search...</label>
@@ -80,17 +83,25 @@
       <!-- Dropdown Trigger -->
       <div class="container">
         <div class="row">
-          <div class="col s9 m3 l3 offset-s1 input-field">
-            <select class="dropdownBlock" onchange="selectedPlatform(event)">
-              <option value="allPlatforms" selected>All Platforms</option>
+          <div class="col s9 m4 l3 offset-s1 input-field">
+            <select
+              id="platformSelect"
+              class="dropdownBlock"
+              onchange="selectedPlatform(event)"
+            >
+              <option value="allPlatforms">All Platforms</option>
               <option value="pc">Windows (PC)</option>
               <option value="browser">Browser (Web)</option>
             </select>
             <label>Platform</label>
           </div>
 
-          <div class="col s9 m3 l3 offset-s1 input-field">
-            <select class="dropdownBlock" onchange="selectedGenre(event)">
+          <div class="col s9 m4 l3 offset-s1 input-field">
+            <select
+              id="genreSelect"
+              class="dropdownBlock"
+              onchange="selectedGenre(event)"
+            >
               <option value="allGenre" selected>All genre</option>
               <option value="card">Card Game</option>
               <option value="fighting">Fighting</option>
@@ -107,35 +118,76 @@
           </div>
 
           <div class="col s9 m3 l3 offset-s1 input-field">
-            <select class="dropdownBlock" onchange="sortBy(event)">
+            <select
+              id="orderSelect"
+              class="dropdownBlock"
+              onchange="sortBy(event)"
+            >
               <option value="relevance" selected>Relevance</option>
               <option value="alphabetical">Alphabetical</option>
               <option value="release-date">Release date</option>
             </select>
             <label>Sort by</label>
           </div>
-
-          <div class="col s11 m6 l3 offset-s1 valign-wrapper">
-            <a
-              class="
-                btn
-                small
-                waves-effect waves-light
-                deep-purple
-                lighten-1
-                disabled
-              "
-              href="#"
-              id="showBtn"
-              onclick="gamesListComplete()"
-            >
-              Show all
-            </a>
+          <div class="row">
+            <div class="col s11 m6 l3 offset-s1 input-field">
+              <a
+                class="
+                  btn-small
+                  waves-effect waves-light
+                  deep-purple
+                  lighten-1
+                  disabled
+                  hoverable
+                "
+                href="#"
+                id="showBtn"
+                onclick="gamesListComplete()"
+              >
+                Show all
+              </a>
+              <a
+                class="
+                  btn-small
+                  waves-effect waves-light
+                  deep-purple
+                  lighten-1
+                  hoverable
+                  tooltipped
+                  modal-trigger
+                "
+                href="#modal3"
+                data-position="bottom"
+                data-tooltip="Favorites saved"
+                onclick="favoritesSaved()"
+                ><i class="material-icons">favorite</i>
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <!-- Dropdown Structure -->
-
-          <ul id="dropdown2" class="dropdown-content dropdownBlock"></ul>
+      <div id="modal3" class="modal">
+        <div>
+          <div class="modal-content">
+            <i class="material-icons icons right modal-close">cancel</i>
+            <div class="row" id="modalFavorites"></div>
+            <div id="loader2" class="center">
+              <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -173,6 +225,10 @@
       </div>
     </footer>
   </body>
+  <script
+    src="https://kit.fontawesome.com/b0962e89dc.js"
+    crossorigin="anonymous"
+  ></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./js/main.js"></script>

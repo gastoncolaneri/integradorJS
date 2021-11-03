@@ -16,7 +16,8 @@
 
     <title>Reviews</title>
   </head>
-  <body onload="carouselGames(); gamesList()">
+  <body onload="carouselGames(); gamesAutocomplete()">
+
     <header>
       <nav class="deep-purple darken-3 z-depth-3 navbar">
         <div class="nav-wrapper">
@@ -69,7 +70,7 @@
             <div class="col s8 offset-s2 white-text">
               <h5>Know the reviews of the game you are looking for: </h5>
             </div>
-            <div class="input-field col s8 offset-s2">
+            <div class="input-field col s8 offset-s2" id="autocompleteReviews">
               <i class="material-icons icons prefix">search</i>
               <input type="text" id="autocomplete-input" class="autocomplete" />
               <label for="autocomplete-input">Search game</label>
@@ -108,7 +109,7 @@
         </a>
       </div>
 
-      <div id="modal2" class="modal">
+      <div id="modal2" class="modal ">
         <div >
         <div class="modal-content ">
           <i class="material-icons icons waves-effect waves-light right modal-close">cancel</i>
@@ -148,8 +149,8 @@
               </div>
           </div>
         </div>
-
       </div>
+      
       </div>
     </main>
 

@@ -90,7 +90,19 @@ textarea {
 }
 
 .justifyFE {
-  justify-content: flex-end;
+  justify-content: flex-end !important;
+}
+
+.justifyFS {
+  justify-content: flex-start !important;
+}
+
+.justifyFEItems {
+  justify-self: flex-end !important;
+}
+
+.justifyFSItems {
+  justify-self: flex-start !important;
 }
 
 .navTitles:hover {
@@ -100,6 +112,7 @@ textarea {
 .description {
   background-color: #4527a0;
   color: #fff;
+  min-height: 170px;
 }
 .descriptionText {
   text-overflow: ellipsis;
@@ -112,9 +125,28 @@ textarea {
 }
 
 .genreTag {
-  background-color: #7e57c2 !important;
+  background-color: transparent !important;
+  border: 2px solid #7e57c2 !important;
   cursor: default !important;
   margin-right: 15px;
+}
+
+.btnInfo {
+  background-color: #673ab7 !important;
+  width: 100%;
+}
+.btnInfo:hover {
+  background-color: #7e57c2 !important;
+}
+
+.addFav {
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+}
+
+.addFav:hover {
+  background-color: #7e57c2 !important;
 }
 
 .select-wrapper ul {
@@ -145,6 +177,7 @@ textarea {
 
 #modal1,
 #modal2,
+#modal3,
 #modal-footer1 {
   background-color: #2d0f57;
 }

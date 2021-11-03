@@ -1,5 +1,6 @@
 let containerCardGames = document.querySelector('#containerCard');
 let loader = document.querySelector('#loader');
+let loader2 = document.querySelector('#loader2');
 let carouselDiv = document.querySelector('#carousel');
 let imgOne = document.querySelector('#imgOne');
 let imgTwo = document.querySelector('#imgTwo');
@@ -7,6 +8,13 @@ let imgThree = document.querySelector('#imgThree');
 let imgFour = document.querySelector('#imgFour');
 let imgFive = document.querySelector('#imgFive');
 let showBtn = document.querySelector('#showBtn');
+let autocompleteReviews = document.querySelector('#autocompleteReviews');
+let autocompleteGames = document.querySelector('#autocompleteGames');
+let platformSelect = document.querySelector('#platformSelect');
+let genreSelect = document.querySelector('#genreSelect');
+let orderSelect = document.querySelector('#orderSelect');
+let modalFavorites = document.querySelector('#modalFavorites');
+
 let listaElementos = [imgOne, imgTwo, imgThree, imgFour, imgFive];
 let listaJuegos = {};
 let games, gamesFilter;
@@ -17,43 +25,114 @@ let orderBy = 'relevance';
 const APIURL = 'https://www.freetogame.com/api/games';
 const URLGAMEID = 'https://www.freetogame.com/api/game?id=';
 
+let flagFavorite = false;
+let favorite = 'favorite_border';
+let gamesFavorites = [];
+
+const addFavorite = (event, id) => {
+  if (event.target.classList.contains('far')) {
+    event.target.classList.remove('far');
+    event.target.classList.add('fas');
+    localStorage.setItem(id, id);
+    console.log(event.target.classList);
+  } else if (event.target.classList.contains('fas')) {
+    event.target.classList.remove('fas');
+    event.target.classList.add('far');
+    localStorage.removeItem(id);
+    console.log(event.target.classList);
+  }
+};
+
+const favoritesSaved = async () => {
+  modalFavorites.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    let value = localStorage.getItem(localStorage.key(i));
+    let datos = await fetch(URLGAMEID + value);
+    let juego = await datos.json();
+    modalFavorites.innerHTML += `
+    <div class="container"> 
+      <div class="col s9 m5 l4 offset-s1">
+        <div class="card cardContent hoverable">
+          <div class="card-image">
+            <img src="${juego.thumbnail}" loading="lazy">
+            <span class="card-title">${juego.title}</span>
+            </a>
+          </div>
+          <div class="card-content description">
+            <p class="truncate">${juego.short_description}</p>
+            <div class="valign-wrapper mt15 justifyFE">
+              <div class="btn genreTag ">${juego.genre}</div>
+              <i class="material-icons">${iconPlatform}</i>
+            </div>
+            <div class=" mt15 center">
+              <a class="btn-small btnInfo" href="${juego.game_url}" target="_blank">Play now!</a>
+            </div>
+        </div>
+      </div>
+    </div>`;
+    loader2.classList.add('hiddenLoader');
+  }
+};
+
 const APIrequest = async () => {
-  let datos = await fetch(APIURL);
-  let respuesta = await datos.json();
-  games = respuesta;
-  mapCard(games);
+  try {
+    let datos = await fetch(APIURL);
+    let respuesta = await datos.json();
+    games = respuesta;
+    mapCard(games);
+  } catch (error) {
+    Swal.fire({
+      title: 'There was an error',
+      text: 'Something went wrong, please try again later',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  }
 };
 
 const mapCard = (data) => {
+  let iconFav;
   containerCardGames.innerHTML = '';
   try {
     data.map((juego) => {
+      if (localStorage.getItem(juego.id)) {
+        iconFav = 'fas fa-heart';
+      } else {
+        iconFav = 'far fa-heart';
+      }
       juego.platform == 'PC (Windows)'
         ? (iconPlatform = 'desktop_windows')
         : (iconPlatform = 'web');
       listaJuegos[juego.title] = juego.thumbnail;
       loader.classList.add('hiddenLoader');
-      containerCardGames.innerHTML += `<div class="col s9 m5 l4 offset-s1">
-      <div class="card cardContent hoverable">
-        <div class="card-image">
-          <img src="${juego.thumbnail}">
-          <span class="card-title">${juego.title}</span>
-        </div>
-        <div class="card-content description">
-          <p class="truncate ">${juego.short_description}</p>
-          <div class="valign-wrapper mt15 justifyFE">
-          <div class="btn-small genreTag ">${juego.genre}</div>
-          <i class="material-icons">${iconPlatform}</i>
+      containerCardGames.innerHTML += `
+      <div class="col s9 m5 l4 offset-s1">
+        <div class="card cardContent hoverable">
+          <div class="card-image">
+            <img src="${juego.thumbnail}" loading="lazy">
+            <span class="card-title">${juego.title}</span>
+            <a class="btn-floating waves-effect waves-light deep-purple addFav hoverable" >
+              <i class="${iconFav}" onclick="addFavorite(event, '${juego.id}')"></i>
+            </a>
           </div>
+          <div class="card-content description">
+            <p class="truncate">${juego.short_description}</p>
+            <div class="valign-wrapper mt15 justifyFE">
+            <div class="btn genreTag ">${juego.genre}</div>
+            <i class="material-icons">${iconPlatform}</i>
+            </div>
+            <div class=" mt15 center">
+              <a class="btn-small btnInfo" href="${juego.game_url}" target="_blank">Play now!</a>
+            </div>
         </div>
       </div>
-    </div>`;
+    `;
     });
   } catch (error) {
     loader.classList.add('hiddenLoader');
     Swal.fire({
       title: 'No results found',
-      icon: 'error',
+      icon: 'info',
       confirmButtonText: 'Ok',
     });
   }
@@ -70,8 +149,9 @@ const carouselAPI = async (i) => {
   let datos = await fetch(URLGAMEID + numRandom);
   let respuesta = await datos.json();
   if (respuesta.status !== 0) {
-    console.log(listaElementos);
-    listaElementos[i].innerHTML += `<img src=${respuesta.thumbnail}/>`;
+    listaElementos[
+      i
+    ].innerHTML += `<img src=${respuesta.thumbnail} loading="lazy"/>`;
     return respuesta;
   } else {
     carouselAPI(i);
@@ -85,19 +165,23 @@ const carouselGames = () => {
 };
 
 const filterAutocomplete = (elemtn) => {
-  gamesFilter = games.filter(
-    (game) => game.title.toLowerCase() === elemtn.toLowerCase()
-  );
-  if ((gamesFilter.length = 1)) {
-    console.log(gamesFilter);
-    gamesFilter[0].platform == 'PC (Windows)'
-      ? (iconPlatform = 'desktop_windows')
-      : (iconPlatform = 'web');
+  // gamesFilter = games.filter(
+  //   (game) => game.title.toLowerCase() === elemtn.toLowerCase()
+  // );
+  if (autocompleteGames) {
+    gamesFilter = games.filter(
+      (game) => game.title.toLowerCase() === elemtn.toLowerCase()
+    );
+    if ((gamesFilter.length = 1)) {
+      loader.classList.add('hiddenLoader');
+      gamesFilter[0].platform == 'PC (Windows)'
+        ? (iconPlatform = 'desktop_windows')
+        : (iconPlatform = 'web');
 
-    containerCardGames.innerHTML = `<div class="col s11 m6 l6 offset-s1">
+      containerCardGames.innerHTML = `<div class="col s11 m6 l6 offset-s1">
       <div class="card cardContent hoverable">
         <div class="card-image">
-          <img src="${gamesFilter[0].thumbnail}">
+          <img src="${gamesFilter[0].thumbnail}" loading="lazy">
           <span class="card-title">${gamesFilter[0].title}</span>
         </div>
         <div class="card-content description">
@@ -109,7 +193,8 @@ const filterAutocomplete = (elemtn) => {
         </div>
       </div>
     </div>`;
-    showBtn.classList.remove('disabled');
+      showBtn.classList.remove('disabled');
+    }
   }
 };
 const gamesAutocomplete = async () => {
@@ -164,6 +249,7 @@ const showGamesFiltered = async () => {
     let respuesta = await datos.json();
     mapCard(respuesta);
   }
+  showBtn.classList.remove('disabled');
 };
 
 // Materialize JS
