@@ -35,13 +35,13 @@ const addFavorite = (event, id) => {
     event.target.classList.add('fas');
     event.target.classList.add('iconYellow');
     localStorage.setItem(id, id);
-    console.log(event.target.classList);
+    M.toast({ html: 'Agregado a favoritos', classes: 'rounded' });
   } else if (event.target.classList.contains('fas')) {
     event.target.classList.remove('fas');
     event.target.classList.remove('iconYellow');
     event.target.classList.add('far');
     localStorage.removeItem(id);
-    console.log(event.target.classList);
+    M.toast({ html: 'Eliminado de favoritos', classes: 'rounded' });
   }
 };
 
@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     onAutocomplete: function (texto) {
       filterAutocomplete(texto);
     },
+    limit: 5,
   };
   let elems = document.querySelectorAll('.autocomplete');
   let instances = M.Autocomplete.init(elems, options);
@@ -307,9 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  let textNeedCount = document.querySelectorAll(
-    '#input_text, #textarea1, #textarea2'
-  );
+  let textNeedCount = document.querySelector('#review-input');
   M.CharacterCounter.init(textNeedCount);
 });
 
@@ -320,4 +319,8 @@ document.addEventListener('DOMContentLoaded', function () {
     constrainWidth: false,
   };
   let instances = M.Dropdown.init(elems, options);
+});
+document.addEventListener('DOMContentLoaded', function () {
+  let elems = document.querySelectorAll('.collapsible');
+  let instances = M.Collapsible.init(elems);
 });

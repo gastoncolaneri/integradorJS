@@ -89,6 +89,35 @@
         </div>
       </div>
 
+      <ul class="collection collapsible popout">
+        <li class="collection-item avatar deep-purple darken-3 noBorder">
+          <div class="collapsible-header deep-purple darken-3 noBorder">
+            <img src="img/logo.png" alt="" class="circle responsive-img" />
+            <p>
+              First Line <br />
+              Second Line
+            </p>
+            <a href="#!" class="secondary-content"
+              ><i class="material-icons">grade</i></a
+            >
+          </div>
+          <div class="collapsible-body noBorder">
+            <span>Lorem ipsum dolor sit amet.</span>
+          </div>
+        </li>
+        <li class="collection-item avatar deep-purple darken-3">
+          <img src="img/logo.png" alt="" class="circle responsive-img" />
+          <span class="title">Title</span>
+          <p>
+            First Line <br />
+            Second Line
+          </p>
+          <a href="#!" class="secondary-content"
+            ><i class="material-icons">grade</i></a
+          >
+        </li>
+      </ul>
+
       <div class="fixed-action-btn">
         <a
           class="
@@ -102,7 +131,7 @@
           "
           href="#modal2"
           data-position="left"
-          data-tooltip="Agregar una opinión"
+          data-tooltip="Submit a review"
         >
           <i class="large material-icons">add</i>
         </a>
@@ -126,24 +155,32 @@
                 </div>
                 <div class="dFlex input-field">
                   <input
-                    id="game-review-input"
                     type="text"
-                    class="datos"
+                    id="autocomplete-review-input"
+                    class="autocomplete datos"
                     required
                   />
-                  <label for="game-review-input">Game</label>
+                  <label for="autocomplete-review-input">Game</label>
                 </div>
               </div>
               <div class="blockDatos">
-                <div class="dFlex input-field">
+                <div class="dFlex input-field valign-wrapper">
                   <textarea
                     id="review-input"
                     class="datos materialize-textarea"
+                    data-length="150"
                     required
                   ></textarea>
                   <label for="review-input">Please write your review</label>
                 </div>
               </div>
+              <div class="taCenter">
+                <p class="range-field">
+                  <input type="range" id="range-input" min="0" max="10" />
+                  <label for="range-input">Overall score </label>
+                </p>
+              </div>
+
               <div class="mt20 taCenter">
                 <button type="submit" class="btnSubmit">Send review</button>
               </div>

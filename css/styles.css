@@ -137,6 +137,9 @@ textarea {
 .footer {
   padding: 20px;
 }
+.noBorder {
+  border: none !important;
+}
 #modal1,
 #modal2,
 #modal3 {
