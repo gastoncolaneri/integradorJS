@@ -91,6 +91,7 @@ textarea {
 
 .justifyFE {
   justify-content: flex-end !important;
+  flex: 1 !important;
 }
 
 .justifyFS {
@@ -336,4 +337,12 @@ textarea {
 }
 .links:visited {
   text-decoration: none;
+}
+
+/* -------------- Review -------------- */
+
+.ratingNumber {
+  background-color: var(--purple) !important;
+  text-align: center;
+  font-weight: bolder !important;
 }

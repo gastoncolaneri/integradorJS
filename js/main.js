@@ -14,6 +14,13 @@ let platformSelect = document.querySelector('#platformSelect');
 let genreSelect = document.querySelector('#genreSelect');
 let orderSelect = document.querySelector('#orderSelect');
 let modalFavorites = document.querySelector('#modalFavorites');
+let modalReview = document.querySelector('#modal2');
+let reviewList = document.querySelector('#reviewList');
+let reviewForm = document.querySelector('#reviewForm');
+let userInput = document.querySelector('#user-review-input');
+let gameInput = document.querySelector('#autocomplete-review-input');
+let reviewInput = document.querySelector('#review-input');
+let rangeInput = document.querySelector('#range-input');
 
 let listaElementos = [imgOne, imgTwo, imgThree, imgFour, imgFive];
 let listaJuegos = {};
@@ -25,9 +32,168 @@ let orderBy = 'relevance';
 const APIURL = 'https://www.freetogame.com/api/games';
 const URLGAMEID = 'https://www.freetogame.com/api/game?id=';
 
-let flagFavorite = false;
-let favorite = 'favorite_border';
-let gamesFavorites = [];
+const mapCard = (data) => {
+  let iconFav;
+  let colorYellow;
+  containerCardGames.innerHTML = '';
+  try {
+    data.map((juego) => {
+      if (localStorage.getItem(juego.id)) {
+        iconFav = 'fas fa-star iconYellow';
+      } else {
+        iconFav = 'far fa-star';
+      }
+      juego.platform == 'PC (Windows)'
+        ? (iconPlatform = 'desktop_windows')
+        : (iconPlatform = 'web');
+      listaJuegos[juego.title] = juego.thumbnail;
+      loader.classList.add('hiddenLoader');
+      containerCardGames.innerHTML += `
+      <div class="col s9 m5 l4 offset-s1">
+        <div class="card cardContent hoverable">
+          <div class="card-image">
+            <img src="${juego.thumbnail}" loading="lazy">
+            <span class="card-title">${juego.title}</span>
+            <a class="btn-floating waves-effect waves-light deep-purple addFav hoverable" >
+              <i class="${iconFav} " onclick="addFavorite(event, '${juego.id}')"></i>
+            </a>
+          </div>
+          <div class="card-content description">
+            <p class="truncate">${juego.short_description}</p>
+            <div class="valign-wrapper mt15 justifyFE">
+            <div class="genreTag ">${juego.genre}</div>
+            <i class="material-icons">${iconPlatform}</i>
+            </div>
+            <div class=" mt15 center">
+              <a class="btn-small btnInfo" href="${juego.game_url}" target="_blank">Play now!</a>
+            </div>
+        </div>
+      </div>
+    `;
+    });
+  } catch (error) {
+    loader.classList.add('hiddenLoader');
+    Swal.fire({
+      title: 'No results found',
+      icon: 'info',
+      confirmButtonText: 'Ok',
+    });
+  }
+};
+
+const saveReviews = async () => {
+  let reviewsSaved = [];
+  if (localStorage.length > 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+      reviewsSaved.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      reviewList.innerHTML += `
+              <li class="collection-item avatar deep-purple darken-3 noBorder">
+              <div class="collapsible-header deep-purple darken-3 noBorder">
+                <div>
+                  <img src="${
+                    listaJuegos[reviewsSaved[i].gameValue]
+                  }" alt="" class="circle responsive-img" />
+                  <p>
+                    ${reviewsSaved[i].gameValue} <br />
+                    Review posted by ${reviewsSaved[i].userValue}
+                  </p>
+                </div>
+                
+              </div>
+              <div class="collapsible-body noBorder">
+                <p>${reviewsSaved[i].reviewValue}</p>
+              </div>
+            </li>
+      `;
+    }
+  }
+  console.log(listaJuegos);
+};
+
+const addReview = () => {
+  let userValue = userInput.value;
+  let gameValue = gameInput.value;
+  let reviewValue = reviewInput.value;
+  let rangeValue = parseInt(rangeInput.value);
+  let ratingList = [];
+  let formData = {
+    userValue: userValue,
+    gameValue: gameValue,
+    reviewValue: reviewValue,
+    rangeValue: rangeValue,
+  };
+  let randomNumber = Math.round(Math.random() * (2000 - 1) + 1);
+  let instance = M.Modal.getInstance(modalReview);
+
+  if (
+    userValue !== '' &&
+    gameValue !== '' &&
+    reviewValue !== '' &&
+    rangeValue !== ''
+  ) {
+    switch (rangeValue) {
+      case 1:
+        ratingList.push('fas', 'far', 'far', 'far', 'far');
+        break;
+      case 2:
+        ratingList.push('fas', 'fas', 'far', 'far', 'far');
+        break;
+      case 3:
+        ratingList.push('fas', 'fas', 'fas', 'far', 'far');
+        break;
+      case 4:
+        ratingList.push('fas', 'fas', 'fas', 'fas', 'far');
+        break;
+      case 5:
+        ratingList.push('fas', 'fas', 'fas', 'fas', 'fas');
+        break;
+      default:
+        ratingList.push('far', 'far', 'far', 'far', 'far');
+    }
+
+    reviewList.innerHTML += `
+          <li class="collection-item avatar deep-purple darken-3 noBorder">
+          <div class="collapsible-header deep-purple darken-3 noBorder">
+            <div>
+              <img src="${listaJuegos[gameValue]}" alt="" class="circle responsive-img" />
+              <p>
+                ${gameValue} <br />
+                Review posted by ${userValue}
+              </p>
+            </div>
+            <div class="justifyFE valign-wrapper">
+              <i class="${ratingList[0]} fa-star  iconYellow"></i>
+              <i class="${ratingList[1]} fa-star iconYellow"></i>
+              <i class="${ratingList[2]} fa-star iconYellow"></i>
+              <i class="${ratingList[3]} fa-star iconYellow"></i>
+              <i class="${ratingList[4]} fa-star iconYellow"></i>
+              <p class="ratingNumber btn-floating">${rangeValue}/5</p>
+            </div>
+          </div>
+          <div class="collapsible-body noBorder">
+            <p>${reviewValue}</p>
+          </div>
+        </li>
+  `;
+    Swal.fire({
+      title: 'Success',
+      text: 'Your review has been submitted!',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
+    instance.close();
+    localStorage.setItem(randomNumber, JSON.stringify(formData));
+    reviewForm.reset();
+  } else {
+    Swal.fire({
+      title: 'Missing information',
+      text: 'Please complete all the information requested',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+    console.log(listaJuegos);
+  }
+};
 
 const addFavorite = (event, id) => {
   if (event.target.classList.contains('far')) {
@@ -87,55 +253,6 @@ const APIrequest = async () => {
       title: 'There was an error',
       text: 'Something went wrong, please try again later',
       icon: 'error',
-      confirmButtonText: 'Ok',
-    });
-  }
-};
-
-const mapCard = (data) => {
-  let iconFav;
-  let colorYellow;
-  containerCardGames.innerHTML = '';
-  try {
-    data.map((juego) => {
-      if (localStorage.getItem(juego.id)) {
-        iconFav = 'fas fa-star iconYellow';
-      } else {
-        iconFav = 'far fa-star';
-      }
-      juego.platform == 'PC (Windows)'
-        ? (iconPlatform = 'desktop_windows')
-        : (iconPlatform = 'web');
-      listaJuegos[juego.title] = juego.thumbnail;
-      loader.classList.add('hiddenLoader');
-      containerCardGames.innerHTML += `
-      <div class="col s9 m5 l4 offset-s1">
-        <div class="card cardContent hoverable">
-          <div class="card-image">
-            <img src="${juego.thumbnail}" loading="lazy">
-            <span class="card-title">${juego.title}</span>
-            <a class="btn-floating waves-effect waves-light deep-purple addFav hoverable" >
-              <i class="${iconFav} " onclick="addFavorite(event, '${juego.id}')"></i>
-            </a>
-          </div>
-          <div class="card-content description">
-            <p class="truncate">${juego.short_description}</p>
-            <div class="valign-wrapper mt15 justifyFE">
-            <div class="genreTag ">${juego.genre}</div>
-            <i class="material-icons">${iconPlatform}</i>
-            </div>
-            <div class=" mt15 center">
-              <a class="btn-small btnInfo" href="${juego.game_url}" target="_blank">Play now!</a>
-            </div>
-        </div>
-      </div>
-    `;
-    });
-  } catch (error) {
-    loader.classList.add('hiddenLoader');
-    Swal.fire({
-      title: 'No results found',
-      icon: 'info',
       confirmButtonText: 'Ok',
     });
   }

@@ -16,7 +16,7 @@
 
     <title>Reviews</title>
   </head>
-  <body onload="carouselGames(); gamesAutocomplete()">
+  <body onload="gamesAutocomplete(), carouselGames(), saveReviews()">
     <header>
       <nav class="deep-purple darken-3 z-depth-3 navbar">
         <div class="nav-wrapper">
@@ -89,34 +89,7 @@
         </div>
       </div>
 
-      <ul class="collection collapsible popout">
-        <li class="collection-item avatar deep-purple darken-3 noBorder">
-          <div class="collapsible-header deep-purple darken-3 noBorder">
-            <img src="img/logo.png" alt="" class="circle responsive-img" />
-            <p>
-              First Line <br />
-              Second Line
-            </p>
-            <a href="#!" class="secondary-content"
-              ><i class="material-icons">grade</i></a
-            >
-          </div>
-          <div class="collapsible-body noBorder">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-        </li>
-        <li class="collection-item avatar deep-purple darken-3">
-          <img src="img/logo.png" alt="" class="circle responsive-img" />
-          <span class="title">Title</span>
-          <p>
-            First Line <br />
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"
-            ><i class="material-icons">grade</i></a
-          >
-        </li>
-      </ul>
+      <ul class="collection collapsible popout" id="reviewList"></ul>
 
       <div class="fixed-action-btn">
         <a
@@ -141,7 +114,7 @@
         <div>
           <div class="modal-content deep-purple darken-3">
             <i class="material-icons icons right modal-close">cancel</i>
-            <form class="mainContainer" action="">
+            <form class="mainContainer" action="" id="reviewForm">
               <p class="mainTitle">Write your review</p>
               <div class="blockDatos">
                 <div class="dFlex input-field">
@@ -176,13 +149,15 @@
               </div>
               <div class="taCenter">
                 <p class="range-field">
-                  <input type="range" id="range-input" min="0" max="10" />
+                  <input type="range" id="range-input" min="1" max="5" />
                   <label for="range-input">Overall score </label>
                 </p>
               </div>
 
               <div class="mt20 taCenter">
-                <button type="submit" class="btnSubmit">Send review</button>
+                <button type="button" class="btnSubmit" onclick="addReview()">
+                  Send review
+                </button>
               </div>
             </form>
           </div>
@@ -199,6 +174,10 @@
       </div>
     </footer>
   </body>
+  <script
+    src="https://kit.fontawesome.com/b0962e89dc.js"
+    crossorigin="anonymous"
+  ></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./js/main.js"></script>
