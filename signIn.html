@@ -65,7 +65,11 @@
     <main>
       <div class="mainContainerLogin">
         <div id="loginBlock" class="w50">
-          <form class="mainContainer deep-purple darken-3" action="">
+          <form
+            class="mainContainer deep-purple darken-3"
+            action=""
+            id="signinForm"
+          >
             <div>
               <p class="mainTitle">Create your account</p>
               <div class="blockDatos">
@@ -130,7 +134,11 @@
 
               <div>
                 <div class="mb15 taCenter">
-                  <button type="submit" class="mb15 mt20 btnSubmit">
+                  <button
+                    type="button"
+                    class="mb15 mt20 btnSubmit"
+                    onclick="signin()"
+                  >
                     Register Now
                   </button>
                 </div>

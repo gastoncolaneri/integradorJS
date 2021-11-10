@@ -134,7 +134,7 @@
         <div>
           <div class="modal-content deep-purple darken-3">
             <i class="material-icons icons right modal-close">cancel</i>
-            <form class="mainContainer" action="">
+            <form class="mainContainer" action="" id="resetPassForm">
               <p class="mainTitle">Reset password</p>
               <div class="mb10 dFlex input-field">
                 <i class="fas fa-user-circle iconLogin prefix"></i
@@ -142,7 +142,13 @@
                 <label for="email-reset-pass-input"> Email </label>
               </div>
               <div class="taCenter">
-                <button type="submit" class="mt20 btnSubmit">Reset</button>
+                <button
+                  type="button"
+                  class="mt20 btnSubmit"
+                  onclick="resetPass()"
+                >
+                  Reset
+                </button>
               </div>
             </form>
           </div>

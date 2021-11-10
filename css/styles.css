@@ -81,12 +81,21 @@ textarea {
 .m0 {
   margin: 0px !important;
 }
+.mt10 {
+  margin-top: 10px !important;
+}
 .mt15 {
-  margin-top: 15px;
+  margin-top: 15px !important;
+}
+.mr5 {
+  margin-right: 5px !important;
+}
+.mr15 {
+  margin-right: 15px !important;
 }
 
-.mr15 {
-  margin-right: 15px;
+.p5 {
+  padding: 5px !important;
 }
 
 .justifyFE {
@@ -104,6 +113,10 @@ textarea {
 
 .justifyFSItems {
   justify-self: flex-start !important;
+}
+
+.height100 {
+  height: 100% !important;
 }
 
 .navTitles:hover {
@@ -174,6 +187,11 @@ textarea {
   color: var(--yellow) !important;
 }
 
+.headerCollapse {
+  display: block !important;
+  padding: 5px !important;
+}
+
 /* -------------- Games -------------- */
 
 .description {
@@ -228,7 +246,12 @@ textarea {
   background-color: var(--purple) !important;
   font-weight: 500 !important;
 }
-
+.noFavorites {
+  font-size: 25px;
+  font-weight: bolder;
+  color: var(--white);
+  text-align: center;
+}
 /* -------------- Login -------------- */
 
 #loginBlock {
@@ -345,4 +368,12 @@ textarea {
   background-color: var(--purple) !important;
   text-align: center;
   font-weight: bolder !important;
+}
+
+/* -------------- Media Queries -------------- */
+
+@media (max-width: 600px) {
+  .headerCollapse {
+    display: flex !important;
+  }
 }

@@ -21,7 +21,6 @@ let userInput = document.querySelector('#user-review-input');
 let gameInput = document.querySelector('#autocomplete-review-input');
 let reviewInput = document.querySelector('#review-input');
 let rangeInput = document.querySelector('#range-input');
-
 let listaElementos = [imgOne, imgTwo, imgThree, imgFour, imgFive];
 let listaJuegos = {};
 let games, gamesFilter;
@@ -29,12 +28,96 @@ let genre = 'allGenre';
 let platform = 'allPlatforms';
 let orderBy = 'relevance';
 
+const emailRegex = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
 const APIURL = 'https://www.freetogame.com/api/games';
 const URLGAMEID = 'https://www.freetogame.com/api/game?id=';
 
+const resetPass = () => {
+  let modalResetPass = document.querySelector('#modal4'),
+    resetPassForm = document.querySelector('#resetPassForm'),
+    email = document.querySelector('#email-reset-pass-input').value,
+    instance = M.Modal.getInstance(modalResetPass);
+
+  if (email === '') {
+    Swal.fire({
+      title: 'Missing email',
+      text: 'Please complete the information required',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  } else if (!emailRegex.test(email)) {
+    Swal.fire({
+      title: 'Invalid Email',
+      text: 'Please provide a valid email',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  } else {
+    Swal.fire({
+      title: 'Password reset',
+      text: 'Password reset successfully. Please check your email and follow the instructions ',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
+    instance.close();
+    resetPassForm.reset();
+  }
+};
+
+const signin = () => {
+  let signinForm = document.querySelector('#signinForm'),
+    name = document.querySelector('#nombre-input').value,
+    surname = document.querySelector('#apellido-input').value,
+    username = document.querySelector('#user-input').value,
+    email = document.querySelector('#email-signin-input').value,
+    emailConf = document.querySelector('#confirm-email-input').value,
+    pass = document.querySelector('#pass-signin-input').value,
+    passConf = document.querySelector('#confirmPass-input').value;
+
+  if (
+    name === '' ||
+    surname === '' ||
+    username === '' ||
+    email === '' ||
+    emailConf === '' ||
+    pass === '' ||
+    passConf === ''
+  ) {
+    Swal.fire({
+      title: 'Missing information',
+      text: 'Please complete the information required',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  } else if (!emailRegex.test(email) || !emailRegex.test(emailConf)) {
+    Swal.fire({
+      title: 'Invalid Email',
+      text: 'Please provide a valid email',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  } else if (email !== emailConf) {
+    Swal.fire({
+      title: 'Emails not match ',
+      text: 'The emails provided should be the same',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+  } else {
+    Swal.fire({
+      title: 'Register success',
+      text: 'Your account has been created successfully ',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    }).then(() => {
+      window.location.replace('login.html');
+    });
+    signinForm.reset();
+  }
+};
+
 const mapCard = (data) => {
   let iconFav;
-  let colorYellow;
   containerCardGames.innerHTML = '';
   try {
     data.map((juego) => {
@@ -81,35 +164,6 @@ const mapCard = (data) => {
   }
 };
 
-const saveReviews = async () => {
-  let reviewsSaved = [];
-  if (localStorage.length > 0) {
-    for (let i = 0; i < localStorage.length; i++) {
-      reviewsSaved.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-      reviewList.innerHTML += `
-              <li class="collection-item avatar deep-purple darken-3 noBorder">
-              <div class="collapsible-header deep-purple darken-3 noBorder">
-                <div>
-                  <img src="${
-                    listaJuegos[reviewsSaved[i].gameValue]
-                  }" alt="" class="circle responsive-img" />
-                  <p>
-                    ${reviewsSaved[i].gameValue} <br />
-                    Review posted by ${reviewsSaved[i].userValue}
-                  </p>
-                </div>
-                
-              </div>
-              <div class="collapsible-body noBorder">
-                <p>${reviewsSaved[i].reviewValue}</p>
-              </div>
-            </li>
-      `;
-    }
-  }
-  console.log(listaJuegos);
-};
-
 const addReview = () => {
   let userValue = userInput.value;
   let gameValue = gameInput.value;
@@ -152,22 +206,24 @@ const addReview = () => {
     }
 
     reviewList.innerHTML += `
-          <li class="collection-item avatar deep-purple darken-3 noBorder">
-          <div class="collapsible-header deep-purple darken-3 noBorder">
-            <div>
-              <img src="${listaJuegos[gameValue]}" alt="" class="circle responsive-img" />
-              <p>
-                ${gameValue} <br />
-                Review posted by ${userValue}
-              </p>
-            </div>
-            <div class="justifyFE valign-wrapper">
-              <i class="${ratingList[0]} fa-star  iconYellow"></i>
-              <i class="${ratingList[1]} fa-star iconYellow"></i>
-              <i class="${ratingList[2]} fa-star iconYellow"></i>
-              <i class="${ratingList[3]} fa-star iconYellow"></i>
-              <i class="${ratingList[4]} fa-star iconYellow"></i>
-              <p class="ratingNumber btn-floating">${rangeValue}/5</p>
+        <li class="collection-item avatar deep-purple darken-3 noBorder">
+          <div class="collapsible-header deep-purple darken-3 noBorder headerCollapse">
+            <div class="row m0">
+              <div class="col s12 m5 l6" >
+                <img src="${listaJuegos[gameValue]}" alt="img" class="circle responsive-img" />
+                <p class="p5">
+                  ${gameValue} <br />
+                  Review posted by ${userValue}
+                </p>
+              </div>
+              <div class="valign-wrapper p5 col s12 m7 l6">
+                <i class="${ratingList[0]} fa-star  iconYellow mr5"></i>
+                <i class="${ratingList[1]} fa-star iconYellow mr5"></i>
+                <i class="${ratingList[2]} fa-star iconYellow mr5"></i>
+                <i class="${ratingList[3]} fa-star iconYellow mr5"></i>
+                <i class="${ratingList[4]} fa-star iconYellow mr5"></i>
+                <p class="ratingNumber btn-floating show-on-medium-and-down">${rangeValue}/5</p>
+              </div>
             </div>
           </div>
           <div class="collapsible-body noBorder">
@@ -182,7 +238,6 @@ const addReview = () => {
       confirmButtonText: 'Ok',
     });
     instance.close();
-    localStorage.setItem(randomNumber, JSON.stringify(formData));
     reviewForm.reset();
   } else {
     Swal.fire({
@@ -191,7 +246,6 @@ const addReview = () => {
       icon: 'error',
       confirmButtonText: 'Ok',
     });
-    console.log(listaJuegos);
   }
 };
 
@@ -213,11 +267,12 @@ const addFavorite = (event, id) => {
 
 const favoritesSaved = async () => {
   modalFavorites.innerHTML = '';
-  for (let i = 0; i < localStorage.length; i++) {
-    let value = localStorage.getItem(localStorage.key(i));
-    let datos = await fetch(URLGAMEID + value);
-    let juego = await datos.json();
-    modalFavorites.innerHTML += `
+  if (localStorage.length > 1) {
+    for (let i = 0; i < localStorage.length; i++) {
+      let value = localStorage.getItem(localStorage.key(i));
+      let datos = await fetch(URLGAMEID + value);
+      let juego = await datos.json();
+      modalFavorites.innerHTML += `
     <div class="container"> 
       <div class="col s9 m5 l4 offset-s1">
         <div class="card cardContent hoverable">
@@ -237,6 +292,13 @@ const favoritesSaved = async () => {
             </div>
         </div>
       </div>
+    </div>`;
+      loader2.classList.add('hiddenLoader');
+    }
+  } else {
+    modalFavorites.innerHTML += `
+    <div class="container"> 
+     <p class="noFavorites"> No favorites added yet!</p>
     </div>`;
     loader2.classList.add('hiddenLoader');
   }
