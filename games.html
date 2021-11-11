@@ -16,8 +16,7 @@
 
     <title>Games</title>
   </head>
-  <!-- <body onload="gamesAutocomplete(), APIrequest()"> -->
-  <body>
+  <body onload="gamesAutocomplete(), APIrequest()">
     <header>
       <nav class="deep-purple darken-3 z-depth-3 navbar" id="navbar">
         <div class="nav-wrapper">
@@ -41,23 +40,23 @@
       <ul class="sidenav deep-purple darken-3" id="mobile-demo">
         <li>
           <a href="/index.html" class="white-text navTitles"
-            ><i class="material-icons icons"> home</i>Home</a
+            ><i class="material-icons iconYellow"> home</i>Home</a
           >
         </li>
         <li>
           <a href="/games.html" class="white-text navTitles">
-            <i class="material-icons icons"> videogame_asset</i>
+            <i class="material-icons iconYellow"> videogame_asset</i>
             Games</a
           >
         </li>
         <li>
           <a href="/review.html" class="white-text navTitles">
-            <i class="material-icons icons"> rate_review</i>Reviews</a
+            <i class="material-icons iconYellow"> rate_review</i>Reviews</a
           >
         </li>
         <li>
           <a href="/login.html" class="white-text navTitles">
-            <i class="material-icons icons"> play_circle_filled</i>Login</a
+            <i class="material-icons iconYellow"> play_circle_filled</i>Login</a
           >
         </li>
       </ul>
@@ -209,19 +208,38 @@
               </div>
             </div>
           </div>
-          <a href="#navbar"
-            ><i class="material-icons upIcon">keyboard_arrow_up </i></a
+          <a
+            href="#navbar"
+            class="
+              btn-floating btn-large
+              waves-effect waves-light
+              deep-purple
+              lighten-1
+              fixedIcons
+            "
+            ><i class="material-icons">keyboard_arrow_up </i></a
           >
         </div>
       </div>
     </main>
 
-    <footer class="page-footer deep-purple darken-3">
-      <div class="footer-copyright deep-purple darken-3">
-        <div class="container">
-          © 2021 Gaston Colaneri
-          <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
+    <footer class="footer-copyright deep-purple darken-3 footer">
+      <div class="container">
+        <div class="iconSocialContainer">
+          <a href="https://www.instagram.com" target="_blank" class="links"
+            ><i class="fab fa-instagram iconSocial"></i>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" class="links"
+            ><i class="fab fa-facebook iconSocial"></i>
+          </a>
+          <a href="https://www.whatsapp.com" target="_blank" class="links"
+            ><i class="fab fa-whatsapp iconSocial"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" class="links"
+            ><i class="fab fa-twitter iconSocial"></i>
+          </a>
         </div>
+        <p class="m0 center">© 2021 Gaston Colaneri</p>
       </div>
     </footer>
   </body>

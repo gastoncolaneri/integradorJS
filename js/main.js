@@ -209,14 +209,14 @@ const addReview = () => {
         <li class="collection-item avatar deep-purple darken-3 noBorder">
           <div class="collapsible-header deep-purple darken-3 noBorder headerCollapse">
             <div class="row m0">
-              <div class="col s12 m5 l6" >
+              <div class="col s12 m5 l6 " >
                 <img src="${listaJuegos[gameValue]}" alt="img" class="circle responsive-img" />
                 <p class="p5">
                   ${gameValue} <br />
                   Review posted by ${userValue}
                 </p>
               </div>
-              <div class="valign-wrapper p5 col s12 m7 l6">
+              <div class="valign-wrapper p5 col s12 m7 l6 blockStar">
                 <i class="${ratingList[0]} fa-star  iconYellow mr5"></i>
                 <i class="${ratingList[1]} fa-star iconYellow mr5"></i>
                 <i class="${ratingList[2]} fa-star iconYellow mr5"></i>
@@ -267,20 +267,23 @@ const addFavorite = (event, id) => {
 
 const favoritesSaved = async () => {
   modalFavorites.innerHTML = '';
-  if (localStorage.length > 1) {
+  if (localStorage.length > 0) {
+    modalFavorites.innerHTML = '<p class="favoriteSaved">My favorite games</p>';
     for (let i = 0; i < localStorage.length; i++) {
       let value = localStorage.getItem(localStorage.key(i));
       let datos = await fetch(URLGAMEID + value);
       let juego = await datos.json();
       modalFavorites.innerHTML += `
-    <div class="container"> 
-      <div class="col s9 m5 l4 offset-s1">
+    <div class="container">
+      <div class="col s12 m10 offset-m1 ">
         <div class="card cardContent hoverable">
           <div class="card-image">
             <img src="${juego.thumbnail}" loading="lazy">
             <span class="card-title">${juego.title}</span>
+            <a class="btn-floating waves-effect waves-light deep-purple addFav hoverable" >
+              <i class="fas fa-star iconYellow " onclick="addFavorite(event, '${value}'); favoritesSaved();APIrequest()"></i>
             </a>
-          </div>
+            </div>
           <div class="card-content description">
             <p class="truncate">${juego.short_description}</p>
             <div class="valign-wrapper mt15 justifyFE">
@@ -298,18 +301,20 @@ const favoritesSaved = async () => {
   } else {
     modalFavorites.innerHTML += `
     <div class="container"> 
-     <p class="noFavorites"> No favorites added yet!</p>
+     <p class="favoriteSaved"> No favorites added yet!</p>
     </div>`;
     loader2.classList.add('hiddenLoader');
   }
 };
 
 const APIrequest = async () => {
+  loader2.classList.remove('hiddenLoader');
   try {
     let datos = await fetch(APIURL);
     let respuesta = await datos.json();
     games = respuesta;
     mapCard(games);
+    loader2.classList.add('hiddenLoader');
   } catch (error) {
     Swal.fire({
       title: 'There was an error',

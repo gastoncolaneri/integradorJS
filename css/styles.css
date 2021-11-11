@@ -70,8 +70,8 @@ textarea {
 }
 
 .navbar {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .botonFloat {
@@ -126,17 +126,14 @@ textarea {
   display: none;
 }
 
-.upIcon {
-  z-index: 999;
-  position: fixed;
-  color: var(--purple);
-  font-size: 80px !important;
-  bottom: 5%;
-  right: 4%;
+.fixedIcons {
+  z-index: 999 !important;
+  position: fixed !important;
+  bottom: 10% !important;
+  right: 4% !important;
 }
-
 .mainTitle {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   text-align: center;
   margin: 10px 0px !important;
@@ -149,7 +146,7 @@ textarea {
 }
 
 .footer {
-  padding: 20px;
+  padding: 30px;
 }
 .noBorder {
   border: none !important;
@@ -164,6 +161,17 @@ textarea {
   width: 55px;
   height: 55px;
 }
+
+.iconSocialContainer {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.iconSocial {
+  font-size: 30px;
+  margin: 0px 12px;
+}
+
 /* -------------- Custom CSS Materialize -------------- */
 
 .input-field label {
@@ -246,7 +254,7 @@ textarea {
   background-color: var(--purple) !important;
   font-weight: 500 !important;
 }
-.noFavorites {
+.favoriteSaved {
   font-size: 25px;
   font-weight: bolder;
   color: var(--white);
@@ -262,6 +270,7 @@ textarea {
   box-shadow: var(--darkGrey) 1px 1px 20px, rgba(0, 0, 0, 0.4) -10px 10px 20px,
     rgba(0, 0, 0, 0.4) 1px -1px 20px;
   margin: 0 auto;
+  width: 60%;
 }
 .btnSubmit {
   border-radius: 10px;
@@ -369,11 +378,39 @@ textarea {
   text-align: center;
   font-weight: bolder !important;
 }
+.blockStar {
+  justify-content: flex-end !important;
+  flex: 1 !important;
+}
+.carouselReview {
+  height: 400px !important;
+}
 
 /* -------------- Media Queries -------------- */
 
 @media (max-width: 600px) {
   .headerCollapse {
     display: flex !important;
+  }
+  #loginBlock {
+    width: 100%;
+  }
+  .blockDatos {
+    grid-template-columns: 1fr;
+  }
+  .blockStar {
+    justify-content: flex-start !important;
+  }
+  .carouselReview {
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  #loginBlock {
+    width: 80%;
+  }
+  .carouselReview {
+    height: 300px !important;
   }
 }

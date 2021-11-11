@@ -40,23 +40,23 @@
       <ul class="sidenav deep-purple darken-3" id="mobile-demo">
         <li>
           <a href="/index.html" class="white-text navTitles"
-            ><i class="material-icons icons"> home</i>Home</a
+            ><i class="material-icons iconYellow"> home</i>Home</a
           >
         </li>
         <li>
           <a href="/games.html" class="white-text navTitles">
-            <i class="material-icons icons"> videogame_asset</i>
+            <i class="material-icons iconYellow"> videogame_asset</i>
             Games</a
           >
         </li>
         <li>
           <a href="/review.html" class="white-text navTitles">
-            <i class="material-icons icons"> rate_review</i>Reviews</a
+            <i class="material-icons iconYellow"> rate_review</i>Reviews</a
           >
         </li>
         <li>
           <a href="/login.html" class="white-text navTitles">
-            <i class="material-icons icons"> play_circle_filled</i>Login</a
+            <i class="material-icons iconYellow"> play_circle_filled</i>Login</a
           >
         </li>
       </ul>
@@ -66,20 +66,15 @@
       <div class="row">
         <div class="col s12">
           <div class="row">
-            <div class="col s8 offset-s2 white-text">
-              <h5>Know the reviews of the game you are looking for:</h5>
-            </div>
-            <div class="input-field col s8 offset-s2" id="autocompleteReviews">
-              <i class="material-icons icons prefix">search</i>
-              <input type="text" id="autocomplete-input" class="autocomplete" />
-              <label for="autocomplete-input">Search game</label>
+            <div class="col s8 offset-s2 white-text center mt20">
+              <h5>Know the reviews of the game you are looking for</h5>
             </div>
           </div>
         </div>
       </div>
       <div class="row center">
         <div class="col s8 offset-s2">
-          <div class="carousel carousel-slider" id="carousel">
+          <div class="carousel carousel-slider carouselReview" id="carousel">
             <a class="carousel-item" id="imgOne" href="#one!"></a>
             <a class="carousel-item" id="imgTwo" href="#two!"></a>
             <a class="carousel-item" id="imgThree" href="#three!"></a>
@@ -101,6 +96,7 @@
             modal-trigger
             tooltipped
             pulse
+            fixedIcons
           "
           href="#modal2"
           data-position="left"
@@ -165,12 +161,23 @@
       </div>
     </main>
 
-    <footer class="page-footer deep-purple darken-3">
-      <div class="footer-copyright deep-purple darken-3">
-        <div class="container">
-          © 2021 Gaston Colaneri
-          <a class="grey-text text-lighten-4 right" href="#!">Subscribe</a>
+    <footer class="footer-copyright deep-purple darken-3 footer">
+      <div class="container">
+        <div class="iconSocialContainer">
+          <a href="https://www.instagram.com" target="_blank" class="links"
+            ><i class="fab fa-instagram iconSocial"></i>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" class="links"
+            ><i class="fab fa-facebook iconSocial"></i>
+          </a>
+          <a href="https://www.whatsapp.com" target="_blank" class="links"
+            ><i class="fab fa-whatsapp iconSocial"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" class="links"
+            ><i class="fab fa-twitter iconSocial"></i>
+          </a>
         </div>
+        <p class="m0 center">© 2021 Gaston Colaneri</p>
       </div>
     </footer>
   </body>
