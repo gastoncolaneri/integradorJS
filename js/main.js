@@ -29,8 +29,9 @@ let platform = 'allPlatforms';
 let orderBy = 'relevance';
 
 const emailRegex = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
-const APIURL = 'https://www.freetogame.com/api/games';
-const URLGAMEID = 'https://www.freetogame.com/api/game?id=';
+const herokuHead = 'https://cors-anywhere.herokuapp.com/';
+const APIURL = herokuHead + 'https://www.freetogame.com/api/games';
+const URLGAMEID = herokuHead + 'https://www.freetogame.com/api/game?id=';
 
 const resetPass = () => {
   let modalResetPass = document.querySelector('#modal4'),
